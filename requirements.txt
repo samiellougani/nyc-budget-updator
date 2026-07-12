@@ -1,0 +1,7 @@
+anthropic==0.116.0
+feedparser==6.0.12
+requests==2.34.2
+beautifulsoup4==4.15.0
+python-dateutil==2.9.0.post0
+twilio==9.10.9
+PyYAML==6.0.3

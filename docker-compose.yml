@@ -1,0 +1,8 @@
+services:
+  digest:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - .:/app

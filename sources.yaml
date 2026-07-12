@@ -1,0 +1,98 @@
+# Source configuration for the weekly digest.
+# Edit freely — no code changes needed to add/remove/adjust sources.
+#
+# Fields:
+#   id:      short unique key (used in state/seen.json)
+#   name:    display name used in the digest
+#   type:    rss | scrape | nysenate | ibo (NYC.gov content-api JSON)
+#   url:     feed URL (rss), listing page URL (scrape), or API base (nysenate)
+#   stance:  short description of the source's known perspective. This is passed
+#            to the summarizer as CONTEXT so it can label advocacy positions and
+#            build the contrast section. It is never printed as editorial judgment.
+#
+# rss-only:
+#   categories: optional list — keep only feed items tagged with one of these
+#
+# scrape-only:
+#   link_pattern:  regex a candidate href must match to count as a publication
+#   fetch_detail:  fetch each NEW article page once for date/excerpt (default true)
+#
+# nysenate-only:
+#   session_year, bills (base print numbers), search_terms
+
+sources:
+  - id: cbc
+    name: Citizens Budget Commission
+    type: scrape
+    url: "https://cbcny.org/research/listing"
+    stance: "nonpartisan fiscal watchdog"
+    link_pattern: "/research/(?!listing)[a-z0-9][a-z0-9-]+$"
+
+  - id: fpi
+    name: Fiscal Policy Institute
+    type: rss
+    url: "https://fiscalpolicy.org/feed/"
+    stance: "progressive / left-leaning think tank"
+
+  - id: empire_center
+    name: Empire Center
+    type: rss
+    url: "https://empirecenter.org/feed/"
+    stance: "free-market / fiscally conservative think tank"
+
+  - id: manhattan_institute
+    name: Manhattan Institute
+    type: rss
+    url: "https://manhattan.institute/rss.xml"
+    stance: "free-market / conservative think tank"
+    categories: ["New York City", "New York", "finance", "economics", "cities", "public finance", "taxes"]
+
+  - id: ibo
+    name: NYC Independent Budget Office
+    type: ibo
+    # NYC.gov content API backing ibo.nyc.gov/content/publications (the HTML
+    # page is JS-rendered; this is the JSON it loads)
+    url: "https://apps.nyc.gov/content-api/v2/custom-contents/ibo/IBO-Publications/1"
+    stance: "nonpartisan city agency"
+
+  - id: ny_focus
+    name: New York Focus
+    type: rss
+    url: "https://nysfocus.com/feed"
+    stance: "investigative nonprofit newsroom"
+
+  - id: the_city
+    name: THE CITY
+    type: rss
+    url: "https://www.thecityreporter.nyc/feed/"
+    stance: "nonprofit local newsroom"
+
+  - id: city_and_state
+    name: City & State New York
+    type: rss
+    url: "https://www.cityandstateny.com/rss/all/"
+    stance: "state/city politics trade press"
+
+  - id: nyc_comptroller
+    name: NYC Comptroller
+    type: rss
+    url: "https://comptroller.nyc.gov/feed/"
+    stance: "elected city fiscal officer"
+
+  - id: nys_comptroller
+    name: NYS Comptroller
+    type: scrape
+    url: "https://www.osc.ny.gov/press"
+    stance: "elected state fiscal officer"
+    link_pattern: "/press/releases/"
+
+  - id: nysenate
+    name: NY Senate Open Legislation
+    type: nysenate
+    url: "https://legislation.nysenate.gov"
+    stance: "official legislative record"
+    session_year: 2025
+    bills: ["S8921"]
+    search_terms:
+      - '"qualified small business stock"'
+      - '"1202" AND billType.resolution:false'

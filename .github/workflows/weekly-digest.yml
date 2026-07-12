@@ -1,0 +1,134 @@
+name: weekly-digest
+
+on:
+  schedule:
+    - cron: "0 11 * * 1" # Mondays 11:00 UTC (6-7am ET depending on DST)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (print digest, no SMS, no state write)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekly-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image (GHA-cached)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: digest:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Write recipients.json from secret
+        env:
+          RECIPIENTS_JSON: ${{ secrets.RECIPIENTS_JSON }}
+        run: |
+          if [ -n "$RECIPIENTS_JSON" ]; then
+            printf '%s' "$RECIPIENTS_JSON" > recipients.json
+            echo "recipients.json written ($(jq length recipients.json) recipients)"
+          else
+            echo "::warning::RECIPIENTS_JSON secret is empty — no SMS will be sent"
+          fi
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          NYSENATE_API_KEY: ${{ secrets.NYSENATE_API_KEY }}
+        run: |
+          docker run --rm -v "$PWD:/app" \
+            -e ANTHROPIC_API_KEY -e TWILIO_ACCOUNT_SID -e TWILIO_AUTH_TOKEN \
+            -e TWILIO_FROM_NUMBER -e NYSENATE_API_KEY \
+            digest:latest python -m pipeline.main ${{ inputs.dry_run == true && '--dry-run' || '' }}
+
+      - name: Surface soft failures as annotations
+        if: always()
+        run: |
+          if [ -f run_summary.json ]; then
+            jq -r '(.source_failures // [])[] | "::warning::Source \(.source_id // .source) failed: \(.error)"' run_summary.json
+            jq -r '(.sms_failures // [])[] | "::warning::SMS to \(.name) failed: \(.error)"' run_summary.json
+          fi
+
+      - name: Commit state and digest
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/seen.json digests/
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit"
+          else
+            git commit -m "digest: $(date -u +%F)"
+            git push
+          fi
+
+      - name: File issue on soft failures (dead sources / SMS errors)
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f run_summary.json ] || exit 0
+          count=$(jq '((.source_failures // []) + (.sms_failures // [])) | length' run_summary.json)
+          [ "$count" -gt 0 ] || exit 0
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          {
+            echo "The weekly digest run on $(date -u +%F) succeeded, but $count component(s) failed:"
+            echo
+            jq -r '(.source_failures // [])[] | "- Source `\(.source_id)`: \(.error)"' run_summary.json
+            jq -r '(.sms_failures // [])[] | "- SMS to \(.name): \(.error)"' run_summary.json
+            echo
+            echo "Run: $run_url"
+            echo
+            echo "Close this issue once resolved — future failures will comment here while it stays open."
+          } > issue_body.md
+          gh label create source-failure --color D93F0B --description "A digest source or SMS send is failing" --force
+          existing=$(gh issue list --label source-failure --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file issue_body.md
+          else
+            gh issue create --title "Digest sources failing (first seen $(date -u +%F))" \
+              --label source-failure --body-file issue_body.md
+          fi
+
+      - name: File issue on hard failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          error=$([ -f run_summary.json ] && jq -r '.error // "see run log"' run_summary.json || echo "see run log")
+          {
+            echo "The weekly digest run failed on $(date -u +%F)."
+            echo
+            echo "Error: $error"
+            echo
+            echo "Run: $run_url"
+            echo
+            echo "Close this issue once resolved — future failures will comment here while it stays open."
+          } > issue_body.md
+          gh label create pipeline-failure --color B60205 --description "The weekly digest run failed outright" --force
+          existing=$(gh issue list --label pipeline-failure --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file issue_body.md
+          else
+            gh issue create --title "Weekly digest run failed ($(date -u +%F))" \
+              --label pipeline-failure --body-file issue_body.md
+          fi
