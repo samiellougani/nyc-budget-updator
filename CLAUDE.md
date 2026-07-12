@@ -5,12 +5,27 @@ Anthropic API → SMS via Twilio → digest committed to `digests/`. Runs in
 GitHub Actions (cron Mondays 11:00 UTC) inside the same Docker image used
 locally.
 
+## Contributing workflow (hard rules)
+
+- **NEVER commit or push directly to `main`.** Every change — code, config,
+  docs, process — goes on a feature branch and lands via a pull request.
+- **Every PR uses `.github/PULL_REQUEST_TEMPLATE.md`, filled out** (summary,
+  why, changes, verification, checklist). No empty template sections.
+- **Update this CLAUDE.md in the same PR for ANY change** it doesn't already
+  describe — new behavior, structure, conventions, or gotchas.
+- The human reviews and merges PRs; don't self-merge.
+- *Known exception:* the weekly-digest GitHub Action pushes its data commits
+  (`digests/*.md`, `state/seen.json`) directly to `main` by design. If branch
+  protection is ever enabled on `main`, that workflow must be reworked
+  (bot bypass or PR-based commits) or every Monday run will fail at the push.
+
 ## Commands
 
 Everything runs through Docker — no local Python setup:
 
 ```bash
-make digest-dry    # full pipeline, prints digest + SMS preview, no sends/writes
+make digest-dry    # full pipeline, prints digest + SMS preview, no sends; also
+                   # writes gitignored digest-preview.md for later inspection
 make digest-send   # real run (respects TEST_PHONE_NUMBER override in .env)
 make test-sms      # single test SMS to TEST_PHONE_NUMBER
 docker compose run --rm digest python - <<'EOF'   # ad-hoc code against the package

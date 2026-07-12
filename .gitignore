@@ -4,6 +4,7 @@ recipients.json
 
 # Run artifacts (not committed; CI reads then discards)
 run_summary.json
+digest-preview.md
 
 # Python
 __pycache__/
