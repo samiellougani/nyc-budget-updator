@@ -133,9 +133,19 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
         body = sms.compose_sms(
             flags, highs, len(mediums), len(lows), deliver.digest_url(date_str)
         )
-        print("\nSMS PREVIEW "
-              f"({len(body)} chars, {sms.segment_count(body)} segment(s)):\n")
-        print(body)
+        sms_preview = (
+            f"SMS PREVIEW ({len(body)} chars, {sms.segment_count(body)} segment(s)):"
+            f"\n\n{body}"
+        )
+        print("\n" + sms_preview)
+        # Persist the preview (gitignored) so dry-run output is inspectable
+        # after the terminal scrolls away.
+        preview_path = config.REPO_ROOT / "digest-preview.md"
+        preview_path.write_text(
+            digest_md + "\n\n---\n\n```\n" + sms_preview + "\n```\n",
+            encoding="utf-8",
+        )
+        log.info("Dry-run preview written -> %s", preview_path)
         write_run_summary(
             ok=True,
             mode="dry-run",

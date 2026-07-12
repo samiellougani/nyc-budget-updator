@@ -65,6 +65,7 @@ cp .env.example .env        # fill in your keys
 cp recipients.json.example recipients.json   # optional; only used by digest-send
 
 make digest-dry             # full pipeline, prints digest + SMS preview, sends nothing
+                            # (also saved to gitignored digest-preview.md)
 make test-sms               # one test SMS to TEST_PHONE_NUMBER (verifies Twilio wiring)
 make digest-send            # real run: writes digest, sends SMS, updates state
 ```
