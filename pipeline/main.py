@@ -1,8 +1,8 @@
 """Weekly digest pipeline CLI.
 
-    python -m pipeline.main               full run: fetch -> summarize -> digest -> SMS -> state
-    python -m pipeline.main --dry-run     print digest to stdout; no SMS, no state, no digest file
-    python -m pipeline.main --test-sms    send one test SMS to TEST_PHONE_NUMBER and exit
+    python -m pipeline.main                 full run: fetch -> summarize -> digest -> Discord -> state
+    python -m pipeline.main --dry-run       print digest to stdout; no delivery, no state, no digest file
+    python -m pipeline.main --test-discord  post one test message to the Discord webhook and exit
 """
 
 from __future__ import annotations
@@ -10,11 +10,9 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import sys
-from datetime import datetime, timezone
 
-from . import config, deliver, fetch, sms, state
+from . import config, deliver, fetch, notify, state
 from .summarize import matches_tripwire, summarize
 
 log = logging.getLogger("pipeline")
@@ -29,18 +27,12 @@ def write_run_summary(**fields) -> None:
     )
 
 
-def run_test_sms() -> int:
-    test_number = os.environ.get("TEST_PHONE_NUMBER", "").strip()
-    if not test_number:
-        log.error("--test-sms requires TEST_PHONE_NUMBER to be set in .env")
-        return 2
-    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    body = f"nyc-budget-updator test message ({stamp}). Twilio wiring OK."
-    failures = sms.send_sms(body, [{"name": "test", "phone": test_number}])
+def run_test_discord() -> int:
+    failures = notify.send_test()
     if failures:
-        log.error("Test SMS failed: %s", failures)
+        log.error("Test Discord message failed: %s", failures)
         return 1
-    log.info("Test SMS sent to %s", test_number)
+    log.info("Test Discord message delivered")
     return 0
 
 
@@ -112,37 +104,42 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
             items_summarized=0,
             truncated=0,
             source_failures=[vars(f) for f in source_failures],
-            sms_failures=[],
+            delivery_failures=[],
             digest_path=None,
         )
         return 0
 
-    entries, contrast = summarize(to_process, stance_md, profile_md, tripwires)
-    log.info("Summarized %d items (contrast=%s)", len(entries), bool(contrast))
+    entries, contrast, brief = summarize(to_process, stance_md, profile_md, tripwires)
+    log.info(
+        "Summarized %d items (contrast=%s, brief=%d chars)",
+        len(entries),
+        bool(contrast),
+        len(brief),
+    )
 
     date_str = deliver.digest_date()
     digest_md = deliver.render_digest(
-        entries, contrast, source_failures, truncated_count, date_str
+        entries, contrast, brief, source_failures, truncated_count, date_str
+    )
+
+    flags, highs, mediums, lows = deliver.split_by_importance(entries)
+    messages = notify.compose_digest_messages(
+        flags, highs, mediums, lows, brief, deliver.digest_url(date_str), date_str
     )
 
     if dry_run:
         print("\n" + "=" * 72)
         print(digest_md)
         print("=" * 72)
-        flags, highs, mediums, lows = deliver.split_by_importance(entries)
-        body = sms.compose_sms(
-            flags, highs, len(mediums), len(lows), deliver.digest_url(date_str)
+        discord_preview = f"DISCORD PREVIEW ({len(messages)} message(s)):\n\n" + (
+            "\n\n----- next message -----\n\n".join(m["content"] for m in messages)
         )
-        sms_preview = (
-            f"SMS PREVIEW ({len(body)} chars, {sms.segment_count(body)} segment(s)):"
-            f"\n\n{body}"
-        )
-        print("\n" + sms_preview)
+        print("\n" + discord_preview)
         # Persist the preview (gitignored) so dry-run output is inspectable
         # after the terminal scrolls away.
         preview_path = config.REPO_ROOT / "digest-preview.md"
         preview_path.write_text(
-            digest_md + "\n\n---\n\n```\n" + sms_preview + "\n```\n",
+            digest_md + "\n\n---\n\n" + discord_preview + "\n",
             encoding="utf-8",
         )
         log.info("Dry-run preview written -> %s", preview_path)
@@ -154,24 +151,17 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
             items_summarized=len(entries),
             truncated=truncated_count,
             source_failures=[vars(f) for f in source_failures],
-            sms_failures=[],
+            delivery_failures=[],
             digest_path=None,
         )
         return 0
 
     # Send mode: digest file first (state is only saved after this succeeds).
     path = deliver.write_digest(digest_md, date_str)
-    flags, highs, mediums, lows = deliver.split_by_importance(entries)
-    body = sms.compose_sms(
-        flags, highs, len(mediums), len(lows), deliver.digest_url(date_str)
+    delivery_failures = notify.send_digest(
+        flags, highs, mediums, lows, brief, deliver.digest_url(date_str), date_str
     )
-    recipients = config.load_recipients()
-    sms_failures = []
-    if recipients:
-        sms_failures = sms.send_sms(body, recipients)
-        deliver.append_sms_failures(path, sms_failures)
-    else:
-        log.warning("No recipients configured — skipping SMS send")
+    deliver.append_delivery_failures(path, delivery_failures)
 
     for item in new_items:
         state.mark_seen(run_state, item.dedup_key, item.url, item.source_id)
@@ -185,7 +175,7 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
         items_summarized=len(entries),
         truncated=truncated_count,
         source_failures=[vars(f) for f in source_failures],
-        sms_failures=sms_failures,
+        delivery_failures=delivery_failures,
         digest_path=str(path.relative_to(config.REPO_ROOT)),
     )
     return 0
@@ -199,15 +189,15 @@ def main() -> int:
     )
     parser = argparse.ArgumentParser(description="NYC/NYS fiscal policy weekly digest")
     parser.add_argument("--dry-run", action="store_true",
-                        help="print digest to stdout; no SMS, no state write")
-    parser.add_argument("--test-sms", action="store_true",
-                        help="send a single test SMS to TEST_PHONE_NUMBER and exit")
+                        help="print digest to stdout; no delivery, no state write")
+    parser.add_argument("--test-discord", action="store_true",
+                        help="post a single test message to the Discord webhook and exit")
     parser.add_argument("--max-items", type=int, default=DEFAULT_MAX_ITEMS,
                         help="cap on items sent to the summarizer")
     args = parser.parse_args()
 
-    if args.test_sms:
-        return run_test_sms()
+    if args.test_discord:
+        return run_test_discord()
     try:
         return run_pipeline(dry_run=args.dry_run, max_items=args.max_items)
     except Exception as exc:  # noqa: BLE001 — record the failure, then re-raise

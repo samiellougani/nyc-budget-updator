@@ -3,11 +3,13 @@
 A weekly pipeline that monitors NYC/NYS fiscal policy sources (think tanks
 across the spectrum, government offices, local press, and the NY Senate bill
 tracker), summarizes the week's developments into a rigorously neutral digest
-with the Anthropic API, and delivers it by SMS via Twilio.
+with the Anthropic API, and posts it to a personal Discord server.
 
-- **Full digest**: committed to [`digests/`](digests/) every Monday
-- **SMS**: tripwire alerts (QSBS/S8921 etc.) first, then high-importance
-  headlines, then a link to the full digest — kept under 3 SMS segments
+- **Discord**: one @everyone-pinging message — a 30-second narrative brief of
+  the week with hyperlinked citations, headline links for any tripwire
+  (QSBS/S8921 etc.) or high-importance items, and a link to the full digest
+- **Full digest**: every item (including low-importance) archived to
+  [`digests/`](digests/) with summaries, claim-type labels, and citations
 - **Schedule**: GitHub Actions, Mondays 11:00 UTC (6–7am ET), plus manual runs
 
 ## How it works
@@ -19,7 +21,7 @@ sources.yaml ──> fetch (RSS / scrape / NY Senate API / NYC content API)
 profile.md ─────> summarize (Anthropic API, structured JSON output)
 prompts/editorial_stance.md      │
                    ▼
-                 digests/YYYY-MM-DD.md  +  SMS to recipients (Twilio)
+                 digests/YYYY-MM-DD.md  +  Discord webhook post
                    │
                  state/seen.json committed back to the repo
 ```
@@ -37,24 +39,12 @@ importance ratings and tripwire keywords without touching code.
 | Key | Where to get it |
 |---|---|
 | `ANTHROPIC_API_KEY` | [platform.claude.com](https://platform.claude.com) → API keys |
-| `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` | [Twilio Console](https://console.twilio.com) dashboard |
-| `TWILIO_FROM_NUMBER` | A Twilio phone number with SMS capability (buy one in the console, ~$1/mo) |
+| `DISCORD_WEBHOOK_URL` | Your Discord server → channel → Edit Channel → Integrations → Webhooks → New Webhook → Copy URL |
 | `NYSENATE_API_KEY` | Free — request a key at [legislation.nysenate.gov](https://legislation.nysenate.gov/) (developer API key signup on the homepage) |
-
-> **Twilio trial accounts:** until you upgrade to a paid account, Twilio only
-> delivers SMS to **verified** numbers (Console → Phone Numbers → Verified
-> Caller IDs) and prefixes messages with a trial notice. Add each recipient as
-> a verified number, or upgrade the account.
 
 ### 2. GitHub Actions secrets
 
-Repo → Settings → Secrets and variables → Actions. Add all four keys above,
-plus:
-
-- `RECIPIENTS_JSON` — the full recipient list as JSON, e.g.
-  `[{"name": "Sami", "phone": "+15551234567"}]`. The workflow writes this to
-  `recipients.json` at runtime. (The file itself is gitignored because this
-  repo is public — phone numbers never land in git.)
+Repo → Settings → Secrets and variables → Actions. Add all three keys above.
 
 ### 3. Local setup
 
@@ -62,31 +52,27 @@ No local Python needed — everything runs through Docker:
 
 ```bash
 cp .env.example .env        # fill in your keys
-cp recipients.json.example recipients.json   # optional; only used by digest-send
 
-make digest-dry             # full pipeline, prints digest + SMS preview, sends nothing
-                            # (also saved to gitignored digest-preview.md)
-make test-sms               # one test SMS to TEST_PHONE_NUMBER (verifies Twilio wiring)
-make digest-send            # real run: writes digest, sends SMS, updates state
+make digest-dry             # full pipeline, prints digest + Discord preview,
+                            # posts nothing (saved to gitignored digest-preview.md)
+make test-discord           # one test message to the webhook (verifies wiring)
+make digest-send            # real run: writes digest, posts to Discord, updates state
 ```
-
-Set `TEST_PHONE_NUMBER` in `.env` for local testing — when set, **all** SMS
-goes only to that number and `recipients.json` is ignored, so you can't
-accidentally spam the real list.
 
 ## Editing what gets tracked
 
 - **`profile.md`** — importance rules (HIGH/MEDIUM/LOW) and the tripwire
   keyword list (the `## Tripwire keywords` bullet list is parsed by the
   pipeline; items matching those keywords are pinned to the top of the digest
-  and the SMS regardless of what the model decides).
+  and the Discord post regardless of what the model decides).
 - **`sources.yaml`** — add/remove/adjust sources. Types: `rss` (feed URL),
   `scrape` (index page + `link_pattern` regex), `nysenate` (tracked bills +
   full-text search terms), `ibo` (NYC.gov content API). Each source carries a
   `stance` label passed to the summarizer as context for advocacy labeling —
   it is never printed as editorial judgment.
-- **Recipients** — update the `RECIPIENTS_JSON` secret (CI) or your local
-  `recipients.json`. Remember Twilio trial-account verification (above).
+- **Audience** — everyone in the Discord channel gets the digest (posts ping
+  `@everyone`). Add people by inviting them to the server; point the webhook
+  at a different channel to move it.
 - **Bill tracking** — S8921 is tracked explicitly; any new bill mentioning
   "qualified small business stock" or "1202" is caught by the search terms in
   `sources.yaml`. Tracked bills re-alert on every status change or amendment.
@@ -98,7 +84,7 @@ You don't need to watch this repo — failures come to you:
 - **Red run / hard failure** → a GitHub issue labeled `pipeline-failure` is
   opened (or commented on, if one is already open) with the error and a link
   to the run.
-- **Dead source or failed SMS** (run still succeeds) → an issue labeled
+- **Dead source or failed Discord delivery** (run still succeeds) → an issue labeled
   `source-failure` lists exactly what failed; the same failures appear as
   warnings on the Actions run page and in the digest's "Run notes" footer.
 - Close the issue once fixed — future failures re-open the conversation by

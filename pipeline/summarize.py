@@ -57,8 +57,9 @@ SCHEMA = {
             },
         },
         "contrast": {"type": ["string", "null"]},
+        "weekly_brief": {"type": "string"},
     },
-    "required": ["items", "contrast"],
+    "required": ["items", "contrast", "weekly_brief"],
     "additionalProperties": False,
 }
 
@@ -180,16 +181,35 @@ def _call_model(client: anthropic.Anthropic, system: str, user_message: str) -> 
     return _parse_json_loosely(_extract_text(response))
 
 
+def _resolve_brief_links(brief: str, items: list[Item]) -> str:
+    """The model hyperlinks by item id (`[phrase](#12)`); substitute the real
+    URLs from OUR fetched data. Any other markdown link target is stripped to
+    plain text — the model can never supply a URL directly."""
+
+    def strip_direct(match: re.Match) -> str:
+        return match.group(1)
+
+    brief = re.sub(r"\[([^\]]+)\]\((?!#\d+\))[^)]*\)", strip_direct, brief)
+
+    def resolve(match: re.Match) -> str:
+        text, idx = match.group(1), int(match.group(2))
+        if 0 <= idx < len(items):
+            return f"[{text}]({items[idx].url})"
+        return text
+
+    return re.sub(r"\[([^\]]+)\]\(#(\d+)\)", resolve, brief)
+
+
 def summarize(
     items: list[Item],
     stance_md: str,
     profile_md: str,
     tripwire_keywords: list[str],
-) -> tuple[list[DigestEntry], str | None]:
+) -> tuple[list[DigestEntry], str | None, str]:
     """One call for all items so the model can build the cross-source
-    contrast section. Returns (entries, contrast)."""
+    contrast section and the weekly brief. Returns (entries, contrast, brief)."""
     if not items:
-        return [], None
+        return [], None, ""
 
     client = anthropic.Anthropic(max_retries=3)
     system = stance_md + "\n\n---\n\n# RELEVANCE PROFILE\n\n" + profile_md
@@ -209,7 +229,8 @@ def summarize(
     contrast = result.get("contrast")
     if contrast is not None and not str(contrast).strip():
         contrast = None
-    return entries, contrast
+    brief = _resolve_brief_links(str(result.get("weekly_brief", "")).strip(), items)
+    return entries, contrast, brief
 
 
 def _validate_entry(

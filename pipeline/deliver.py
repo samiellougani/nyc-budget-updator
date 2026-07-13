@@ -54,6 +54,7 @@ def _render_entry(entry: DigestEntry) -> str:
 def render_digest(
     entries: list[DigestEntry],
     contrast: str | None,
+    brief: str,
     source_failures: list[SourceFailure],
     truncated_count: int,
     date_str: str,
@@ -66,6 +67,8 @@ def render_digest(
         f"{len(entries)} item(s)_",
         "",
     ]
+    if brief:
+        parts += ["## The week in brief", "", brief.strip(), ""]
     if contrast:
         parts += ["> **Where sources disagree:** " + contrast.strip(), ""]
     sections = [
@@ -103,10 +106,10 @@ def write_digest(content: str, date_str: str) -> Path:
     return path
 
 
-def append_sms_failures(path: Path, sms_failures: list[dict]) -> None:
-    if not sms_failures:
+def append_delivery_failures(path: Path, delivery_failures: list[dict]) -> None:
+    if not delivery_failures:
         return
-    lines = ["", "## SMS delivery failures", ""]
-    lines += [f"- {f['name']}: {f['error']}" for f in sms_failures]
+    lines = ["", "## Delivery failures", ""]
+    lines += [f"- {f['name']}: {f['error']}" for f in delivery_failures]
     with path.open("a", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")

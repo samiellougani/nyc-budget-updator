@@ -1,7 +1,8 @@
 # CLAUDE.md
 
 Weekly NYC/NYS fiscal policy digest: fetch sources → summarize with the
-Anthropic API → SMS via Twilio → digest committed to `digests/`. Runs in
+Anthropic API → post to Discord via webhook → digest committed to `digests/`.
+Runs in
 GitHub Actions (cron Mondays 11:00 UTC) inside the same Docker image used
 locally.
 
@@ -24,10 +25,10 @@ locally.
 Everything runs through Docker — no local Python setup:
 
 ```bash
-make digest-dry    # full pipeline, prints digest + SMS preview, no sends; also
-                   # writes gitignored digest-preview.md for later inspection
-make digest-send   # real run (respects TEST_PHONE_NUMBER override in .env)
-make test-sms      # single test SMS to TEST_PHONE_NUMBER
+make digest-dry    # full pipeline, prints digest + Discord preview, no posts;
+                   # also writes gitignored digest-preview.md for inspection
+make digest-send   # real run: digest file + Discord post + state update
+make test-discord  # single test message to the Discord webhook
 docker compose run --rm digest python - <<'EOF'   # ad-hoc code against the package
 from pipeline import fetch, config
 EOF
@@ -40,11 +41,11 @@ assert-style checks used during development (see git history).
 
 | Path | Role |
 |---|---|
-| `pipeline/main.py` | CLI + orchestration; `--dry-run`, `--test-sms`, `--max-items` |
+| `pipeline/main.py` | CLI + orchestration; `--dry-run`, `--test-discord`, `--max-items` |
 | `pipeline/fetch.py` | Source fetchers: `rss`, `scrape`, `nysenate`, `ibo`; returns `(items, failures)` |
 | `pipeline/state.py` | `state/seen.json` dedup: sha256 of normalized URL; 90-day prune |
 | `pipeline/summarize.py` | One Anthropic call for all items; JSON schema + fallback parse |
-| `pipeline/sms.py` | GSM-7 transliteration, septet segmentation, ≤3-segment composer, Twilio |
+| `pipeline/notify.py` | Discord webhook delivery: plain-content message (no embeds) — @everyone header + model-written weekly brief + tripwire/HIGH headline links + full-digest link |
 | `pipeline/deliver.py` | Digest markdown rendering, NY-timezone dating |
 | `sources.yaml` | Source list — user-editable, no code changes needed |
 | `profile.md` | Relevance profile — loaded into the system prompt; tripwire keywords parsed from its `## Tripwire keywords` bullet list |
@@ -68,9 +69,23 @@ assert-style checks used during development (see git history).
 - **NY Senate dedup keys include status + actionDate** so tracked bills
   re-alert on every status change/amendment. Article keys are normalized URLs
   (tracking params stripped).
-- **SMS must stay GSM-7.** `sms.to_gsm7` strips accents before composing —
-  "pied-à-terre" would otherwise flip the message to UCS-2 (67 chars/segment
-  vs 153). Budget is 3×153 septets; the composer degrades greedily.
+- **Discord gets the weekly brief as a plain-content message — NOT an embed.**
+  The user explicitly rejected the embed's bordered-card look. The model
+  writes `weekly_brief` (120–180 words, plain English for a reader with no
+  fiscal background — jargon explained inline; tripwire/HIGH first, MEDIUM
+  themes, LOW omitted; 5–8 links max) hyperlinking phrases via item-id refs
+  (`[phrase](#12)`); `summarize._resolve_brief_links` substitutes real URLs
+  and strips any direct-URL link the model tries to emit — the
+  anti-hallucination invariant applies to the brief too. After the brief:
+  tripwire/HIGH headline links ("Flagged this week", max 10) and a
+  full-digest link.
+- **Message mechanics.** `content` starts with `@everyone` AND the payload
+  sets `allowed_mentions: {"parse": ["everyone"]}` — without allowed_mentions
+  the mention renders but does not notify. `flags: 4` (SUPPRESS_EMBEDS) stops
+  every hyperlink from spawning a preview card. Content hard limit is 2000
+  chars **counting raw link URLs**; `_split_content` breaks at
+  paragraph/sentence boundaries into follow-up messages (no ping) when
+  needed — normally it's a single message.
 - **Editorial neutrality is a hard requirement** — any prompt edits must keep
   the FOR/AGAINST steelmanning, claim-type labels, no-loaded-language rule,
   and retroactivity flagging in `prompts/editorial_stance.md`.
@@ -84,8 +99,9 @@ assert-style checks used during development (see git history).
   (`apps.nyc.gov/content-api/...`) instead. The a860-gpp.nyc.gov portal
   hard-403s bots — don't switch back to it.
 - THE CITY rebranded: feed is `thecityreporter.nyc/feed/` (thecity.nyc 301s).
-- `recipients.json` is gitignored (public repo, phone numbers = PII); CI
-  materializes it from the `RECIPIENTS_JSON` secret. Never commit a real one.
+- Discord delivery posts to `DISCORD_WEBHOOK_URL` with `?wait=true`, which
+  makes Discord confirm message creation synchronously — a non-2xx response
+  IS the delivery failure signal (no async status polling needed).
 - The model is `claude-sonnet-5` by default (`ANTHROPIC_MODEL` overrides).
   Structured output via `output_config={"format": {"type": "json_schema"...}}`
   with a prompt-based JSON fallback on `BadRequestError` — keep both paths.

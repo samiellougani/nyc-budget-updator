@@ -47,5 +47,20 @@ section. Never editorialize about the sources themselves in your output.
 - `contrast`: a top-level field. If two or more sources covered the same
   proposal this week, write a short neutral paragraph laying out the positions
   side by side, naming the sources. Otherwise set it to null.
+- `weekly_brief`: a top-level field — a clear, concise narrative brief of the
+  week (100–150 words, hard maximum 160) written in plain English for an
+  intelligent reader with NO background in fiscal policy. Explain any term of
+  art in a few words the first time it appears — e.g., "QSBS — a federal tax
+  break on sales of startup stock", "the Rainy Day Fund — the city's savings
+  cushion for downturns", "FY28 — the budget year ending mid-2028". Prefer
+  everyday words: "the city's savings rules" over "reserve governance". Lead
+  with tripwire and HIGH items, then the notable MEDIUM developments as
+  connected themes rather than a list; omit LOW items entirely. Where sources
+  disagree, say so inline with attribution. On a quiet week, say so honestly
+  in 2–4 sentences instead of padding. Hyperlink ONLY the 5 most important
+  phrases (fewer is fine) using item-id references — write `[phrase](#12)`
+  where 12 is the item's `id`; never write a URL directly (any direct URL
+  will be stripped). The same neutrality rules apply: attribute advocacy,
+  label projections as projections, no loaded language.
 - If an item is irrelevant to the reader profile (national news with no NY
   angle, sports, culture), rate it LOW and keep the summary to one sentence.
