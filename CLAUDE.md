@@ -2,10 +2,12 @@
 
 Weekly NYC/NYS fiscal policy digest: fetch sources → summarize with the
 Anthropic API → post to Discord via webhook → digest committed to `digests/`.
-Runs in GitHub Actions (cron Mondays 11:07 UTC ≈ 7am ET; GitHub's scheduler
-is best-effort — observed delays range from minutes to hours, so the run
-lands "Monday morning", not at an exact minute) inside the same Docker image
-used locally.
+Runs from a **local host cron** (Ubuntu box with Docker) via
+`scripts/run_weekly.sh`, in the same Docker image used for `make` targets.
+The script refreshes `main`, runs the pipeline, and — when there are changes —
+opens a **pull request** to `main` that the human reviews and merges. Install
+the cron roughly Mondays ~7am ET, e.g.
+`7 11 * * 1  /path/to/repo/scripts/run_weekly.sh >> /var/log/digest.log 2>&1`.
 
 ## Contributing workflow (hard rules)
 
@@ -16,10 +18,10 @@ used locally.
 - **Update this CLAUDE.md in the same PR for ANY change** it doesn't already
   describe — new behavior, structure, conventions, or gotchas.
 - The human reviews and merges PRs; don't self-merge.
-- *Known exception:* the weekly-digest GitHub Action pushes its data commits
-  (`digests/*.md`, `state/seen.json`) directly to `main` by design. If branch
-  protection is ever enabled on `main`, that workflow must be reworked
-  (bot bypass or PR-based commits) or every Monday run will fail at the push.
+- The weekly cron is no exception: `scripts/run_weekly.sh` never pushes to
+  `main`. It pushes a `digest/YYYY-MM-DD` branch and opens a PR (data commit:
+  `digests/*.md`, `state/seen.json`) for the human to merge. `main` is
+  branch-protected.
 
 ## Commands
 
@@ -38,6 +40,12 @@ EOF
 There is no test suite; verification is `make digest-dry` plus the inline
 assert-style checks used during development (see git history).
 
+The weekly production run is `scripts/run_weekly.sh` (invoked by the host
+cron). It reads secrets from a gitignored `.env` at repo root
+(`ANTHROPIC_API_KEY`, `DISCORD_WEBHOOK_URL`, `NYSENATE_API_KEY`,
+`GITHUB_TOKEN`), builds `digest:latest`, runs `python -m pipeline.main`, and
+opens the weekly PR. Requires `docker`, `git`, `curl`, and `jq` on the host.
+
 ## Layout
 
 | Path | Role |
@@ -51,12 +59,13 @@ assert-style checks used during development (see git history).
 | `sources.yaml` | Source list — user-editable, no code changes needed |
 | `profile.md` | Relevance profile — loaded into the system prompt; tripwire keywords parsed from its `## Tripwire keywords` bullet list |
 | `prompts/editorial_stance.md` | Nonpartisan editorial rules — the core product constraint |
+| `scripts/run_weekly.sh` | Local-cron entrypoint: refresh main → build → run → open weekly PR; Discord notice on failure |
 
 ## Conventions & invariants
 
 - **One failing source must never kill the run.** Every fetcher is wrapped
-  per-source; failures go into the digest footer, Actions warnings, and a
-  `source-failure` GitHub issue.
+  per-source; failures go into the digest footer, `run_summary.json`, and the
+  "Run notes (soft failures)" section of the weekly PR body.
 - **State invariant:** `seen.json` is saved only after the digest file is
   written. Summarizer failure → non-zero exit, no state write, items retry
   next week. Dry-run never touches state.
@@ -90,12 +99,15 @@ assert-style checks used during development (see git history).
 - **Quiet weeks still post.** A send-mode run with zero new items posts a
   non-pinging "no new items" heartbeat (`notify.send_no_news`) — otherwise a
   quiet week is indistinguishable from a broken cron. Dry runs never post.
-- **Keep the cron minute off-peak** (`7 11 * * 1`, not `:00`). GitHub cron is
-  best-effort: a newly added schedule missed its first occurrence entirely
-  and then fired 3h23m late; the first Monday production run fired 2h24m
-  late. Delays are normal, drops are possible — the heartbeat + `pipeline-
-  failure` issues are the detection mechanisms, and an external trigger
-  (repository_dispatch) is the escalation path if punctuality ever matters.
+- **Failure signaling is via Discord + the PR, not GitHub issues.** A hard
+  failure (pipeline non-zero, or PR creation fails after the branch is pushed)
+  makes `scripts/run_weekly.sh` post a short plain-content, non-pinging notice
+  to the Discord webhook and exit non-zero — so a broken cron is visible in
+  the channel. Soft failures (dead source / delivery error) surface in the
+  weekly PR body's "Run notes" section. The `run_weekly.sh` run is idempotent
+  per day: if `digest/YYYY-MM-DD` already exists on the remote it logs and
+  exits 0, so re-running the cron never duplicates PRs. Timing is up to the
+  host `cron`; keep the minute off-peak (`7 11 * * 1`).
 - **Editorial neutrality is a hard requirement** — any prompt edits must keep
   the FOR/AGAINST steelmanning, claim-type labels, no-loaded-language rule,
   and retroactivity flagging in `prompts/editorial_stance.md`.
