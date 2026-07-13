@@ -142,6 +142,22 @@ def send_digest(
     return []
 
 
+def send_no_news(date_str: str, items_checked: int) -> list[dict]:
+    """Heartbeat for quiet runs: proves the pipeline ran on schedule even when
+    there is nothing to digest. No @everyone — informational, not an alert."""
+    return _post(
+        {
+            "content": (
+                f"NYC/NYS Fiscal Digest — {date_str}: no new items since the "
+                f"last run ({items_checked} fetched, all previously seen). "
+                "Pipeline ran on schedule."
+            ),
+            "flags": SUPPRESS_EMBEDS,
+            "allowed_mentions": NO_MENTIONS,
+        }
+    )
+
+
 def send_test() -> list[dict]:
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     return _post(

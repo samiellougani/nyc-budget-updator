@@ -86,6 +86,12 @@ assert-style checks used during development (see git history).
   chars **counting raw link URLs**; `_split_content` breaks at
   paragraph/sentence boundaries into follow-up messages (no ping) when
   needed — normally it's a single message.
+- **Quiet weeks still post.** A send-mode run with zero new items posts a
+  non-pinging "no new items" heartbeat (`notify.send_no_news`) — otherwise a
+  quiet week is indistinguishable from a broken cron. Dry runs never post.
+- The workflow temporarily carries a second cron (`30 2 * * *`, nightly) to
+  confirm scheduled runs fire — remove it after the first successful
+  scheduled run (the Monday `0 11 * * 1` cron is the real cadence).
 - **Editorial neutrality is a hard requirement** — any prompt edits must keep
   the FOR/AGAINST steelmanning, claim-type labels, no-loaded-language rule,
   and retroactivity flagging in `prompts/editorial_stance.md`.
