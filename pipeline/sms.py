@@ -5,12 +5,19 @@ from __future__ import annotations
 import logging
 import math
 import os
+import time
 import unicodedata
 
 from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
 
 log = logging.getLogger(__name__)
+
+# Twilio's API returns 201 when a message is ACCEPTED, not delivered. Carrier
+# blocks (e.g. A2P 10DLC error 30034 from an unregistered number) happen
+# asynchronously, so we poll message status after a short delay to catch them.
+DELIVERY_CHECK_DELAY_SECONDS = 20
+FAILED_STATUSES = {"failed", "undelivered"}
 
 # 3 concatenated GSM-7 segments = 3 x 153 septets
 MAX_SEGMENTS = 3
@@ -121,13 +128,35 @@ def send_sms(body: str, recipients: list[dict]) -> list[dict]:
         len(recipients),
     )
     failures = []
+    accepted = []
     for recipient in recipients:
         try:
             message = client.messages.create(
                 to=recipient["phone"], from_=from_number, body=body
             )
-            log.info("SMS to %s: sid=%s", recipient["name"], message.sid)
+            log.info("SMS to %s accepted: sid=%s", recipient["name"], message.sid)
+            accepted.append((recipient, message.sid))
         except TwilioRestException as exc:
-            log.warning("SMS to %s FAILED: %s", recipient["name"], exc.msg)
+            log.warning("SMS to %s FAILED at send: %s", recipient["name"], exc.msg)
             failures.append({"name": recipient["name"], "error": str(exc.msg)})
+
+    # Second pass: confirm the carrier actually delivered (or at least didn't
+    # reject). Best-effort — a message still in flight counts as OK.
+    if accepted:
+        time.sleep(DELIVERY_CHECK_DELAY_SECONDS)
+        for recipient, sid in accepted:
+            try:
+                message = client.messages(sid).fetch()
+            except TwilioRestException as exc:
+                log.warning("Status check for %s failed: %s", recipient["name"], exc.msg)
+                continue
+            if message.status in FAILED_STATUSES:
+                error = (
+                    f"carrier delivery {message.status}"
+                    f" (error {message.error_code}: {message.error_message})"
+                )
+                log.warning("SMS to %s NOT DELIVERED: %s", recipient["name"], error)
+                failures.append({"name": recipient["name"], "error": error})
+            else:
+                log.info("SMS to %s status: %s", recipient["name"], message.status)
     return failures

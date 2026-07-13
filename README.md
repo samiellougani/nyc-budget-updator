@@ -46,6 +46,14 @@ importance ratings and tripwire keywords without touching code.
 > Caller IDs) and prefixes messages with a trial notice. Add each recipient as
 > a verified number, or upgrade the account.
 
+> **US A2P 10DLC registration is required.** US carriers block SMS from
+> unregistered local numbers (Twilio error 30034) — even to verified numbers.
+> Register in the Console under Messaging → Regulatory Compliance → US A2P
+> 10DLC: create a **Sole Proprietor** brand (individual/hobby tier, ~$4
+> one-time + ~$2/mo), create the campaign, and attach your Twilio number.
+> The pipeline checks delivery status after sending and reports carrier
+> rejections as SMS failures (GitHub issue + digest footer).
+
 ### 2. GitHub Actions secrets
 
 Repo → Settings → Secrets and variables → Actions. Add all four keys above,

@@ -91,3 +91,10 @@ assert-style checks used during development (see git history).
   with a prompt-based JSON fallback on `BadRequestError` — keep both paths.
 - Local `docker compose run` mounts the repo at `/app`, shadowing the image
   copy — code edits don't need a rebuild; dependency changes do.
+- Twilio's REST API returns 201 when a message is *accepted*, not delivered.
+  Carrier rejections (e.g. A2P 10DLC error 30034 from an unregistered local
+  number) arrive asynchronously — `sms.send_sms` polls each message's status
+  after `DELIVERY_CHECK_DELAY_SECONDS` and reports `failed`/`undelivered` as
+  sms_failures. Don't treat the create() success as proof of delivery.
+- The from-number must be registered for US A2P 10DLC (sole-proprietor brand
+  + campaign in the Twilio console) or carriers silently drop every message.
