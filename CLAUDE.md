@@ -2,9 +2,10 @@
 
 Weekly NYC/NYS fiscal policy digest: fetch sources → summarize with the
 Anthropic API → post to Discord via webhook → digest committed to `digests/`.
-Runs in
-GitHub Actions (cron Mondays 11:00 UTC) inside the same Docker image used
-locally.
+Runs in GitHub Actions (cron Mondays 11:07 UTC ≈ 7am ET; GitHub's scheduler
+is best-effort — observed delays range from minutes to hours, so the run
+lands "Monday morning", not at an exact minute) inside the same Docker image
+used locally.
 
 ## Contributing workflow (hard rules)
 
@@ -89,9 +90,12 @@ assert-style checks used during development (see git history).
 - **Quiet weeks still post.** A send-mode run with zero new items posts a
   non-pinging "no new items" heartbeat (`notify.send_no_news`) — otherwise a
   quiet week is indistinguishable from a broken cron. Dry runs never post.
-- The workflow temporarily carries a second cron (`30 2 * * *`, nightly) to
-  confirm scheduled runs fire — remove it after the first successful
-  scheduled run (the Monday `0 11 * * 1` cron is the real cadence).
+- **Keep the cron minute off-peak** (`7 11 * * 1`, not `:00`). GitHub cron is
+  best-effort: a newly added schedule missed its first occurrence entirely
+  and then fired 3h23m late; the first Monday production run fired 2h24m
+  late. Delays are normal, drops are possible — the heartbeat + `pipeline-
+  failure` issues are the detection mechanisms, and an external trigger
+  (repository_dispatch) is the escalation path if punctuality ever matters.
 - **Editorial neutrality is a hard requirement** — any prompt edits must keep
   the FOR/AGAINST steelmanning, claim-type labels, no-loaded-language rule,
   and retroactivity flagging in `prompts/editorial_stance.md`.

@@ -10,7 +10,8 @@ with the Anthropic API, and posts it to a personal Discord server.
   (QSBS/S8921 etc.) or high-importance items, and a link to the full digest
 - **Full digest**: every item (including low-importance) archived to
   [`digests/`](digests/) with summaries, claim-type labels, and citations
-- **Schedule**: GitHub Actions, Mondays 11:00 UTC (6–7am ET), plus manual runs
+- **Schedule**: GitHub Actions, Mondays ~7am ET (11:07 UTC; GitHub cron is
+  best-effort, so expect it within an hour or two), plus manual runs
 
 ## How it works
 
