@@ -49,6 +49,7 @@ assert-style checks used during development (see git history).
 | `sources.yaml` | Source list — user-editable, no code changes needed |
 | `profile.md` | Relevance profile — loaded into the system prompt; tripwire keywords parsed from its `## Tripwire keywords` bullet list |
 | `prompts/editorial_stance.md` | Nonpartisan editorial rules — the core product constraint |
+| `TERMS.md`, `PRIVACY.md` | SMS program terms + privacy policy. Their `blob/main/` URLs are registered in the Twilio A2P 10DLC campaign — do NOT rename or move these files or the registration links break |
 
 ## Conventions & invariants
 
