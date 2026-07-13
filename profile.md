@@ -33,7 +33,8 @@ Small Business Stock (QSBS) exclusion under IRC Section 1202.
 ## Tripwire keywords
 
 Any item whose title or excerpt matches one of these keywords is pinned in a
-flagged section at the very top of the digest and the SMS, above HIGH items.
+flagged section at the very top of the digest and the Discord post, above
+HIGH items.
 (This list is parsed by the pipeline — keep it as a plain bullet list.)
 
 - S8921

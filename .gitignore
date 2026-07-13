@@ -1,6 +1,5 @@
 # Secrets and local-only config
 .env
-recipients.json
 
 # Run artifacts (not committed; CI reads then discards)
 run_summary.json

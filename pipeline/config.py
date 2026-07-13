@@ -1,8 +1,7 @@
-"""Configuration loading: env vars, sources.yaml, profile.md, recipients."""
+"""Configuration loading: env vars, sources.yaml, profile.md."""
 
 from __future__ import annotations
 
-import json
 import os
 import re
 from dataclasses import dataclass, field
@@ -15,7 +14,6 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SOURCES_PATH = REPO_ROOT / "sources.yaml"
 PROFILE_PATH = REPO_ROOT / "profile.md"
 STANCE_PATH = REPO_ROOT / "prompts" / "editorial_stance.md"
-RECIPIENTS_PATH = REPO_ROOT / "recipients.json"
 STATE_PATH = REPO_ROOT / "state" / "seen.json"
 DIGESTS_DIR = REPO_ROOT / "digests"
 RUN_SUMMARY_PATH = REPO_ROOT / "run_summary.json"
@@ -92,16 +90,6 @@ def parse_tripwire_keywords(profile_md: str) -> list[str]:
         if line.startswith("- "):
             keywords.append(line[2:].strip())
     return keywords
-
-
-def load_recipients(path: Path = RECIPIENTS_PATH) -> list[dict]:
-    """Recipient list. TEST_PHONE_NUMBER overrides everything for local runs."""
-    test_number = os.environ.get("TEST_PHONE_NUMBER", "").strip()
-    if test_number:
-        return [{"name": "test", "phone": test_number}]
-    if not path.exists():
-        return []
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def get_model() -> str:

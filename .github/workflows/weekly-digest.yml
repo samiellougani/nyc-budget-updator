@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Dry run (print digest, no SMS, no state write)"
+        description: "Dry run (print digest, no Discord post, no state write)"
         type: boolean
         default: false
 
@@ -35,28 +35,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Write recipients.json from secret
-        env:
-          RECIPIENTS_JSON: ${{ secrets.RECIPIENTS_JSON }}
-        run: |
-          if [ -n "$RECIPIENTS_JSON" ]; then
-            printf '%s' "$RECIPIENTS_JSON" > recipients.json
-            echo "recipients.json written ($(jq length recipients.json) recipients)"
-          else
-            echo "::warning::RECIPIENTS_JSON secret is empty — no SMS will be sent"
-          fi
-
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
-          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           NYSENATE_API_KEY: ${{ secrets.NYSENATE_API_KEY }}
         run: |
           docker run --rm -v "$PWD:/app" \
-            -e ANTHROPIC_API_KEY -e TWILIO_ACCOUNT_SID -e TWILIO_AUTH_TOKEN \
-            -e TWILIO_FROM_NUMBER -e NYSENATE_API_KEY \
+            -e ANTHROPIC_API_KEY -e DISCORD_WEBHOOK_URL -e NYSENATE_API_KEY \
             digest:latest python -m pipeline.main ${{ inputs.dry_run == true && '--dry-run' || '' }}
 
       - name: Surface soft failures as annotations
@@ -64,7 +50,7 @@ jobs:
         run: |
           if [ -f run_summary.json ]; then
             jq -r '(.source_failures // [])[] | "::warning::Source \(.source_id // .source) failed: \(.error)"' run_summary.json
-            jq -r '(.sms_failures // [])[] | "::warning::SMS to \(.name) failed: \(.error)"' run_summary.json
+            jq -r '(.delivery_failures // [])[] | "::warning::Delivery (\(.name)) failed: \(.error)"' run_summary.json
           fi
 
       - name: Commit state and digest
@@ -80,26 +66,26 @@ jobs:
             git push
           fi
 
-      - name: File issue on soft failures (dead sources / SMS errors)
+      - name: File issue on soft failures (dead sources / delivery errors)
         if: success()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           [ -f run_summary.json ] || exit 0
-          count=$(jq '((.source_failures // []) + (.sms_failures // [])) | length' run_summary.json)
+          count=$(jq '((.source_failures // []) + (.delivery_failures // [])) | length' run_summary.json)
           [ "$count" -gt 0 ] || exit 0
           run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           {
             echo "The weekly digest run on $(date -u +%F) succeeded, but $count component(s) failed:"
             echo
             jq -r '(.source_failures // [])[] | "- Source `\(.source_id)`: \(.error)"' run_summary.json
-            jq -r '(.sms_failures // [])[] | "- SMS to \(.name): \(.error)"' run_summary.json
+            jq -r '(.delivery_failures // [])[] | "- Delivery (\(.name)): \(.error)"' run_summary.json
             echo
             echo "Run: $run_url"
             echo
             echo "Close this issue once resolved — future failures will comment here while it stays open."
           } > issue_body.md
-          gh label create source-failure --color D93F0B --description "A digest source or SMS send is failing" --force
+          gh label create source-failure --color D93F0B --description "A digest source or Discord delivery is failing" --force
           existing=$(gh issue list --label source-failure --state open --json number --jq '.[0].number // empty')
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body-file issue_body.md
