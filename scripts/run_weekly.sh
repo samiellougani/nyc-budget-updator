@@ -149,7 +149,12 @@ else
 fi
 
 # --- open the PR via the GitHub REST API ------------------------------------
-slug="$(git config --get remote.origin.url | sed -E 's#^(git@github.com:|https://github.com/)##; s#\.git$##')"
+# Extract owner/repo from the remote URL. Handles SSH (git@github.com:o/r.git),
+# HTTPS (https://github.com/o/r.git), and HTTPS with embedded credentials
+# (https://user:token@github.com/o/r.git). Strip .git, then keep only the final
+# two path segments — this drops the scheme, host, and any user:token@ prefix,
+# so the token can never leak into the slug (or the API URL / error messages).
+slug="$(git config --get remote.origin.url | sed -E 's#\.git$##; s#^.*[/:]([^/]+/[^/]+)$#\1#')"
 pr_payload="$(jq -n --arg t "digest: ${DATE}" --arg h "${BRANCH}" \
   --rawfile b "${body_file}" '{title: $t, head: $h, base: "main", body: $b}')"
 
