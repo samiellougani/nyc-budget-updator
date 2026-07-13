@@ -2,10 +2,10 @@ name: weekly-digest
 
 on:
   schedule:
-    - cron: "0 11 * * 1" # Mondays 11:00 UTC (6-7am ET depending on DST)
-    # TEMPORARY: nightly fire at 02:30 UTC (10:30pm ET) to confirm scheduled
-    # runs work end-to-end — REMOVE after the first successful scheduled run.
-    - cron: "30 2 * * *"
+    # Mondays ~7am ET. Off-peak minute (not :00) — GitHub's scheduler is
+    # best-effort and on-the-hour slots see the worst delays; expect the run
+    # within roughly an hour of this time, not at it.
+    - cron: "7 11 * * 1"
   workflow_dispatch:
     inputs:
       dry_run:
