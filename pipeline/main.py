@@ -92,10 +92,14 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
 
     if not to_process:
         log.info("No new items this week — nothing to summarize.")
+        delivery_failures = []
         if not dry_run:
             for item in new_items:
                 state.mark_seen(run_state, item.dedup_key, item.url, item.source_id)
             state.save_state(run_state)
+            # Heartbeat: a silent quiet week is indistinguishable from a
+            # broken cron, so say so in the channel (without pinging).
+            delivery_failures = notify.send_no_news(deliver.digest_date(), len(items))
         write_run_summary(
             ok=True,
             mode="dry-run" if dry_run else "send",
@@ -104,7 +108,7 @@ def run_pipeline(dry_run: bool, max_items: int) -> int:
             items_summarized=0,
             truncated=0,
             source_failures=[vars(f) for f in source_failures],
-            delivery_failures=[],
+            delivery_failures=delivery_failures,
             digest_path=None,
         )
         return 0
