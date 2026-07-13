@@ -10,8 +10,8 @@ with the Anthropic API, and posts it to a personal Discord server.
   (QSBS/S8921 etc.) or high-importance items, and a link to the full digest
 - **Full digest**: every item (including low-importance) archived to
   [`digests/`](digests/) with summaries, claim-type labels, and citations
-- **Schedule**: GitHub Actions, Mondays ~7am ET (11:07 UTC; GitHub cron is
-  best-effort, so expect it within an hour or two), plus manual runs
+- **Schedule**: a local host cron runs `scripts/run_weekly.sh` Mondays ~7am ET;
+  on changes it opens a pull request to `main` for review, plus manual runs
 
 ## How it works
 
@@ -24,7 +24,7 @@ prompts/editorial_stance.md      │
                    ▼
                  digests/YYYY-MM-DD.md  +  Discord webhook post
                    │
-                 state/seen.json committed back to the repo
+                 state/seen.json  ──> opened as a PR to main (human merges)
 ```
 
 The editorial stance (`prompts/editorial_stance.md`) enforces nonpartisan
@@ -43,22 +43,41 @@ importance ratings and tripwire keywords without touching code.
 | `DISCORD_WEBHOOK_URL` | Your Discord server → channel → Edit Channel → Integrations → Webhooks → New Webhook → Copy URL |
 | `NYSENATE_API_KEY` | Free — request a key at [legislation.nysenate.gov](https://legislation.nysenate.gov/) (developer API key signup on the homepage) |
 
-### 2. GitHub Actions secrets
+### 2. Local `.env`
 
-Repo → Settings → Secrets and variables → Actions. Add all three keys above.
+```bash
+cp .env.example .env        # fill in your keys
+```
+
+The weekly cron (`scripts/run_weekly.sh`) reads secrets from this gitignored
+`.env`. Alongside the three keys above it needs `GITHUB_TOKEN` (a token with
+`repo`/`pull_request` scope) so it can open the weekly PR against the
+branch-protected `main`.
 
 ### 3. Local setup
 
 No local Python needed — everything runs through Docker:
 
 ```bash
-cp .env.example .env        # fill in your keys
-
 make digest-dry             # full pipeline, prints digest + Discord preview,
                             # posts nothing (saved to gitignored digest-preview.md)
 make test-discord           # one test message to the webhook (verifies wiring)
 make digest-send            # real run: writes digest, posts to Discord, updates state
 ```
+
+### 4. Weekly cron
+
+Install `scripts/run_weekly.sh` on an always-on host with `docker`, `git`,
+`curl`, and `jq`. It refreshes `main`, runs the pipeline in the Docker image,
+and — when `digests/` or `state/seen.json` changed — pushes a
+`digest/YYYY-MM-DD` branch and opens a PR to `main` for you to merge:
+
+```cron
+7 11 * * 1  /path/to/nyc-budget-updator/scripts/run_weekly.sh >> /var/log/digest.log 2>&1
+```
+
+It is idempotent per day (re-runs won't duplicate a PR) and posts a Discord
+notice if the run or PR creation fails.
 
 ## Editing what gets tracked
 
@@ -82,14 +101,14 @@ make digest-send            # real run: writes digest, posts to Discord, updates
 
 You don't need to watch this repo — failures come to you:
 
-- **Red run / hard failure** → a GitHub issue labeled `pipeline-failure` is
-  opened (or commented on, if one is already open) with the error and a link
-  to the run.
-- **Dead source or failed Discord delivery** (run still succeeds) → an issue labeled
-  `source-failure` lists exactly what failed; the same failures appear as
-  warnings on the Actions run page and in the digest's "Run notes" footer.
-- Close the issue once fixed — future failures re-open the conversation by
-  commenting on any still-open issue rather than spamming new ones.
+- **Hard failure** (pipeline exits non-zero, or the PR can't be created) →
+  `scripts/run_weekly.sh` posts a short, non-pinging notice to the Discord
+  webhook and exits non-zero. Check the host cron log for the full trace.
+- **Dead source or failed Discord delivery** (run still succeeds) → the
+  weekly PR body's "Run notes (soft failures)" section lists exactly what
+  failed; the same failures appear in the digest's "Run notes" footer.
+- **No PR on a Monday** → check the host cron log; a quiet week (no new items)
+  legitimately opens no PR but still posts a "no new items" Discord heartbeat.
 
 Debug locally with `make digest-dry` — it prints per-source fetch counts and
 the failure list without sending anything.
@@ -97,9 +116,9 @@ the failure list without sending anything.
 ## Notes
 
 - The summarizer model defaults to `claude-sonnet-5`; override with
-  `ANTHROPIC_MODEL` in `.env` or the workflow env.
-- `state/seen.json` is the dedup memory, committed back by CI. Entries older
-  than 90 days are pruned automatically. Tracked bills are keyed by
-  status+date so status changes always re-alert.
+  `ANTHROPIC_MODEL` in `.env`.
+- `state/seen.json` is the dedup memory, committed back via the weekly PR.
+  Entries older than 90 days are pruned automatically. Tracked bills are keyed
+  by status+date so status changes always re-alert.
 - One dead feed never kills the run — it's recorded and reported, and the
   digest ships without it.
