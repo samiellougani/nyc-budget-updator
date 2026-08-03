@@ -1,5 +1,10 @@
 {
   "items": {
+    "049254e2bcc872f237f25e08695054d9e1fbbc944136a68a89ce61fd856c225f": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-audit-finds-administrative-delays-housing-program-veterans-disabilities"
+    },
     "07daec3edae81dc127617bf494bfca2702ce218dee5bdb8d5bde26fb2ad6d0dd": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -10,10 +15,20 @@
       "source": "nyc_comptroller",
       "url": "https://comptroller.nyc.gov/newsroom/testimonies/testimony-of-new-york-city-comptroller-mark-levine-before-the-charter-revision-commission-on-government-efficiency-coge-2/"
     },
+    "0cd22672bc5bd1c11c40e53ce49aec4460de6a8bd4198c3b38b0b42f0f896f9a": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/31/letitia-james-lawsuit-kalshi-illegal-gambling/"
+    },
     "0f5f06dea6d9339587971dd91e0dfff83f41a3b763f767c7e1c8c0d0130d50cf": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/politics/2026/07/new-rules-you-dont-need-labor-during-election-you-need-them-after/414717/"
+    },
+    "0fbfcd8f17165c10eb301bba965270c3445441f5953c08ebff845917d8ec1990": {
+      "first_seen": "2026-08-03",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/08/03/new-york-humanoid-robot-school-ban"
     },
     "0fbfd00a0a3bd5cf9a42468ecb72002f8023972c37e6765631b06813bd8a4771": {
       "first_seen": "2026-07-13",
@@ -60,6 +75,11 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-nyc-department-buildings-meets-critical-goals-lags-lower-priority-issues"
     },
+    "213fd328f96ea8e98a3346635e75b0ab3c2f816d1bc90c8a7e9eae25b0ead1c4": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/nyn-media/2026/07/jumpstarting-ai-nonprofits/415031/"
+    },
     "24c12d8c1ca2c9b21903f162f08b4ce8c889faae0779262381979b2184ab1391": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -70,10 +90,25 @@
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/the-bigger-apple-off-the-map-the-politics-of-nycs-world-cup-guide"
     },
+    "27eba4ab3748b45b9ee6b040eea469885f1d7ff0df5d21bead8e3f57a5728b8a": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/07/blakeman-sets-stage-election-denialism/415103/"
+    },
+    "2da1a0dcb2fd4ee4ab9c0e70b132b8d69462b9ceb6174f2997f473458be4a916": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/07/opinion-teaming-good-nyc-infrastructure/415137/"
+    },
     "2f880a4107f110dde85b0b4017df5e4f7c8f712fcf7b0a94df2d11a9f768e2c4": {
       "first_seen": "2026-07-13",
       "source": "empire_center",
       "url": "https://www.empirecenter.org/publications/the-attorney-generals-mfcu-snafu/"
+    },
+    "3044b19c60c66b2b4fc17624355d6defcc5a990e4392e208c947e6d097c054e3": {
+      "first_seen": "2026-08-03",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/07/31/trump-child-asylum-claims-immigration-court"
     },
     "31ba5532a8b554824cc993bf8ab911c858f80a5c04667c28c58d00046908c27a": {
       "first_seen": "2026-07-13",
@@ -90,10 +125,30 @@
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/10/industrial-zone-budget-cuts-funding-manufacturing/"
     },
+    "321d765c47e34cea15859a8e55756bebc5f31e009e735171193e8f25eded2b91": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/podcasts/2026/07/bonus-episode-governing-ai-requires-new-playbook/415150/"
+    },
+    "32ac126a0eec73e66f59985f67a5ba1d80ac5dff990e98e34127ba1c92f7045e": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/29/why-public-defenders-on-strike-nyc-uaw/"
+    },
+    "3589de67ce5b93c9aeeb5eb50f61cdf6fcc26e3956e7cf1d4430441fff54d756": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/op-ed-industry-employs-every-neighborhood"
+    },
     "36b53813ae764a311e957e7ffa09f9eee86a3185795e285ea70011d75a5caeac": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/dinapoli-nyc-executive-budget-currently-balanced-risks-threaten-long-term-fiscal-stability"
+    },
+    "41011f8862e486753ed5de11c7aa2dc8183359ca8095eaba0fa2cee2fc7a1aea": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/07/robert-duffy-no-second-term-cuomo-and-how-upstate-has-changed/415042/"
     },
     "42d141117121d9b41dee41501cf49169fd2f1829edd8f1bc006143fc6a5ca0b1": {
       "first_seen": "2026-07-13",
@@ -110,15 +165,50 @@
       "source": "cbc",
       "url": "https://cbcny.org/research/false-choice"
     },
+    "465143c8e00d1c2ecc40c66ef31b1808b6ca4a0baf12be265d33893831ff67ca": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/08/dozens-city-officials-are-driven-around-chauffeurs-are-they-living-bubble/415163/"
+    },
+    "471e5f4546db162d9969f476fe7f348293b90ac454e05d911a53ef3147ebbdd8": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-statement-mtas-july-financial-plan"
+    },
     "47f38f6416c55feced4f0c29c87f6a2fc1c2dc120e61e33c5bcee1d62ff9bbd4": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-statement-new-york-city-reserves"
     },
+    "4859d9b3c2836756ed8e925c561daa8e4e50c32c8b81e3cede0c2c56e7f409e2": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-tax-cap-remains-2-percent-2027"
+    },
+    "4eeae7e48ad56c3b5c9cd5260796013e13fd92bdc92226b7053751921019bb8f": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-local-sales-tax-collections-total-127-billion-first-half-2026-68-over-last-year"
+    },
     "50f06525c6cc616f646b87f7075ed9944c34f612991ec5ead5bd47de4507cec6": {
       "first_seen": "2026-07-13",
       "source": "cbc",
       "url": "https://cbcny.org/research/top-charts-3"
+    },
+    "5401363ece4a22d07b040d84f0425ebdf4139d0d28e07cfa04936bf75be747bc": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/07/new-yorkers-cast-write-votes-bloomberg-bernie-and-brunson/415041/"
+    },
+    "566aa8b787220552aa150ad58c19d8100a290dfeb13a44608999a9b197983a32": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/policy/2026/07/what-mamdanis-office-community-safety-does-aftermath-tragedy/415132/"
+    },
+    "5781d0030549d3679a3615bc6141edb8a6ad6ad150ce0bc87abd97d5deba9d2d": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-business-tax-receipts-drive-higher-collections-first-quarter"
     },
     "5848a2cde27096409f068a0d728f85fbc85df5a75fa20ce1cf9830b171a13f1a": {
       "first_seen": "2026-07-13",
@@ -130,6 +220,11 @@
       "source": "cbc",
       "url": "https://cbcny.org/research/competitive-nyc"
     },
+    "5e7be7256269e577d6222f0eb03773da3017a610ff1aa2b5f3c50c455ad35cbd": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/31/unaccompanied-children-migrants-without-lawyers-trump/"
+    },
     "63da281dd87bd75e25c500665deb557b8e0ab41334d0ee0d53bf879c969020a3": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -139,6 +234,16 @@
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/13/world-cup-hotel-bust-watch-parties-economy-sports-bars/"
+    },
+    "6658f14771ff4860298d66915cedf8184e020d4fe5f001f54393215fe513f64f": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/07/nypd-inspector-investigated-psych-eval-scandal-getting-promoted/415133/"
+    },
+    "6957e9d7ddffde91c4e8963c2abf3445d63db23ef85fb554fcc8d07c0b339c51": {
+      "first_seen": "2026-08-03",
+      "source": "nyc_comptroller",
+      "url": "https://comptroller.nyc.gov/newsroom/press-releases/comptroller-review-urges-stronger-support-for-atwork-to-expand-employment-opportunities-for-new-yorkers-with-disabilities/"
     },
     "6e4ae6fd442d196d1f843b43a9301b69ddf299d7d855738724d2a5279f8bf18f": {
       "first_seen": "2026-07-13",
@@ -154,6 +259,11 @@
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/10/red-hook-pool-parks-martin-maher/"
+    },
+    "728df8d2c51f62cb59d1b3ca5b7afc3c0ddca3ed0f79163f81d6b8479d23dc65": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-nyc-hotel-industry-among-nations-largest-strongest"
     },
     "739300e426ba068c56b635d45510bebab1498ad5abae448d28459cad5c0f0c9d": {
       "first_seen": "2026-07-13",
@@ -190,6 +300,11 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-releases-municipal-audits-0"
     },
+    "7acc494a0fd582c775ac6b909b8f6476fcc99123e0989452cccc6ca6ab5e3119": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-homelessness-falls-statewide-driven-nyc-rises-sharply-many-ny-regions"
+    },
     "828c95e6ec7b62f0837cfdbb600620cd267652fcfbddf69e8ab9cc3d1a11c825": {
       "first_seen": "2026-07-13",
       "source": "cbc",
@@ -215,10 +330,30 @@
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/politics/2026/07/cutting-satire-pro-circumcision-constantino-campaign-flyers-are-fake/414691/"
     },
+    "8770f763257c648cf9ccedee5ecaba7717a8e18023cf775e7b1639e8ba23d1d1": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-nyc-department-aging-needs-improve-oversight-elder-abuse-service-providers"
+    },
     "87a6d01cdee0016e3c0fc765be68f50e3fc01104c40328d9c604fc4613103879": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-releases-municipal-audits"
+    },
+    "892e1500ed512d1f77abc0f8bb337977700cb9122a53e6a3c3ebd8a46f95ca49": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/policy/2026/07/whats-pied-terre-tax-and-why-do-people-care/415105/"
+    },
+    "8cf8c35cac339c7d82684337599bbe651e20a6100062f197aadc01a739260a2c": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/policy/2026/07/more-new-york-dems-are-calling-ice-be-abolished/415090/"
+    },
+    "9090ddf73cab0bf0ba1e24fba7f7f52630adc578463fb56eb43652cc9c641fcc": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/30/flushing-meadows-corona-park-donovan-richards-queens-usta/"
     },
     "92ae6117fc2faf451d101660bc3bb15a67c33825d55860403dc4675f6e6b046f": {
       "first_seen": "2026-07-13",
@@ -240,6 +375,11 @@
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/podcasts/2026/07/episode-1-lessons-silicon-valley/414632/"
     },
+    "97a8be2958d70b8b756ab154cdd40aecd6e62c7756d2aa931c9e045a8097b58d": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-releases-report-sfy-2027-enacted-state-budget-and-financial-plan"
+    },
     "9830dccc0a01cfea1b584a6e9c832fa796cbd36ac6226c608aa3429480a87c0b": {
       "first_seen": "2026-07-13",
       "source": "cbc",
@@ -249,6 +389,16 @@
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/policy/2026/07/progressive-momentum-their-side-tenant-advocates-see-hope-rest-act-next-session/414602/"
+    },
+    "9b925c49c946e519b4f819fb3f38e8169c6bdec7912e7abf47af60a15e98007b": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/state-comptroller-dinapoli-releases-audits"
+    },
+    "9e057e03c7b0b88836cc756a69a12460733323d6ab01a17989f2accf28e58949": {
+      "first_seen": "2026-08-03",
+      "source": "empire_center",
+      "url": "https://www.empirecenter.org/publications/nyc-employee-pension-payments-rise-to-6-2-billion/"
     },
     "9e3e3335ec80f7d2ad61222eb6bb47fdd4bd8d3974328385c1edb643416217a9": {
       "first_seen": "2026-07-13",
@@ -264,6 +414,11 @@
       "first_seen": "2026-07-13",
       "source": "ny_focus",
       "url": "https://nysfocus.com/2026/07/06/ny-helps-hochul-mamdani-nyc-vacancies"
+    },
+    "9fd9efe241f131d9e2abfeac2c6bda8af7fc19c4ee2f7abc82a9ad2a8a6535a3": {
+      "first_seen": "2026-08-03",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/07/30/new-york-ai-systems-inventory-findings"
     },
     "a0c9d1fe74e6327e0a6b0db21997dcd92b46b62edd187343d93e956606634be9": {
       "first_seen": "2026-07-13",
@@ -295,6 +450,16 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/dinapoli-upstate-bus-services-needs-better-time-performance"
     },
+    "af38c40815f0776ef3e017e367e99b0722b69225c75765158d668a6409ed225d": {
+      "first_seen": "2026-08-03",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/07/29/nursing-homes-settlement-new-york-buffalo"
+    },
+    "afdcd97d7b43f5302bc2d471b146de8e9c96d4da933f0133d2ff7e625cdcdfcc": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/07/fuck-were-getting-better-liz-krueger-mend/415127/"
+    },
     "b17cbb14d68cd3af42216f43664ebe63f21d8c1545c0efd2f4342a7b8d3e6d54": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -305,15 +470,45 @@
       "source": "cbc",
       "url": "https://cbcny.org/research/nyc-budget-blueprint"
     },
+    "b37f7acccc2d0926bb011a37f59bf62d74f9e9e602e3dd8a1c5e750e5a6983ce": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/08/03/david-banks-sheena-wright-podcast-eric-adams-alvin-bragg/"
+    },
+    "b6daaf18a6219f6ce872f579159a2c198b493ebfcc954355fc278e38b8c385e2": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/07/mamdani-orders-agencies-find-25-savings-again/415068/"
+    },
+    "b7ee365b0d1447212e9e3d5db70848db0989f772c44163a6fcbeb059a60f9074": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/power-lists/2026/08/2026-above-beyond-social-services/415118/"
+    },
     "b81048e66b7ca86e10f53a81ebdf01501968dd86267d871787b0ad08ec0f514f": {
       "first_seen": "2026-07-13",
       "source": "ny_focus",
       "url": "https://nysfocus.com/2026/07/09/ice-buffalo-detention-facility-expansion-batavia"
     },
+    "b848826b1f041d9cc2d3eb8777f6e74e921ba3d0170973475c3099b996bcaa39": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/30/east-village-legionella-tenants-upper-east-side/"
+    },
     "b95d5f03d30d1710397084b4f09ad5c6c62659a970da45c933a68f5de5231260": {
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/09/upper-east-side-legionnaires-cooling-tower-inspections/"
+    },
+    "bb6dde7f86c3f4f8cab8f1728439c45d090f37eb9eb510021508a87d8e94b696": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/07/glick-retiring-what-will-become-prria/415038/"
+    },
+    "bb9de80313a60166cc38e422f5280d790c47391d39183bfc5c6daa9956df66ea": {
+      "first_seen": "2026-08-03",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/07/28/salamanca-ai-teaching-assistant-interview"
     },
     "bce976a3014e946faefc8c6237a3b9130b7f1891c32f8d6b3a274654ce7bccf7": {
       "first_seen": "2026-07-13",
@@ -340,10 +535,20 @@
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/adams-650m-plan-for-homeless-mentally-ill-holds-a-mirror-to-his-troubled-tenure-2"
     },
+    "c590de8baecb0de8472ff094bf5f370c403a7af59311952ab130456e1dd8f4c4": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/state-comptroller-dinapoli-releases-audits-0"
+    },
     "c973575b08839234bbce7906aa90622ba3a04c1e319f8fae05098465daa979f1": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/policy/2026/07/legislation-ban-horse-carriages-nears-majority-support/414703/"
+    },
+    "cd33e18041fdf65347ee5cdb40eed5797494def05c2b57493e527fe047fa39a6": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/31/manhattan-legionnaires-legionella-outbreak-ends/"
     },
     "cf00fb0684018a7d222ee537ba2cd1e511fef2e8beb287c2210c05215fc92b45": {
       "first_seen": "2026-07-13",
@@ -355,10 +560,25 @@
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/power-lists/2026/07/2026-whos-who-insurance/414625/"
     },
+    "d45f97b858b7ace51cfb9a998cf55bb314090e7a209a515443d9cba941bd8692": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/30/mamdani-eases-adams-era-curriculum-mandate-for-nyc-early-childhood-education/"
+    },
+    "d72ce87a197863a4c96055129f26db07c41e67e29903e27308b218e15a73c7c2": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-former-cape-vincent-ambulance-squad-chief-arrested-allegedly-stealing-over-157000-himself"
+    },
     "d8dd2c2220d83cc24447594c7a9dc9cb7ff550c0f00c2b00d0d83efd8775911b": {
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/13/nyc-specialized-high-schools-racial-demographics-shsat/"
+    },
+    "db1d3b3e8d5cca13ab7566a1097dcc13a81a0f1f5bdc3063f891bd00dbf82267": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/07/lecommute-other-options-lebron-james-go-new-york-city-philadelphia/415076/"
     },
     "dbc420f369f98b58c892acc26319e8276762a84dd9b3efc60e2b625d8ac2aea4": {
       "first_seen": "2026-07-13",
@@ -369,6 +589,11 @@
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-releases-audits"
+    },
+    "e2a85138f1027fde548d79bb6c9928406e1dbb8348d9951302aee7de2e2b7d22": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/07/weeks-biggest-winners-losers-july-31-2026/415136/"
     },
     "e2dbd873c0d6e3b27988cb47bf9908560ddc16205cec3946445262378428d9e5": {
       "first_seen": "2026-07-13",
@@ -394,6 +619,11 @@
       "first_seen": "2026-07-13",
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/private-equity-for-everyone-is-getting-out-of-hand"
+    },
+    "e8f46ff8d56eead14cf9f9117fcd105c3f7b95935e217afaa1fa731b9756d6cc": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/07/early-look-state-legislative-races-our-radar-november/415030/"
     },
     "eadbc4a8a760938d261b2ac4861106dea59e03674ad55658ebb6d96b299a533a": {
       "first_seen": "2026-07-13",
@@ -429,6 +659,31 @@
       "first_seen": "2026-07-13",
       "source": "cbc",
       "url": "https://cbcny.org/research/nyc-resident-feedback-survey-report-results"
+    },
+    "f24523bf5a945276e93702fd6aecd4919f65e201141d684a24b23d8a7a81f7fe": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/07/30/nyc-birding-guide-nature-wildlife-how-to/"
+    },
+    "f2bf49e1bf98cfa2d90df07635d6b1e869cee003a70d18bf6e582847d27e6e0d": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/podcasts/2026/07/episode-4-ai-bet-building-future-and-where-does-new-york-go-here/415094/"
+    },
+    "f340e15d073a6a3264692c9100f744d01e25897877ce2f3c1eabca24bb76da9d": {
+      "first_seen": "2026-08-03",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/08/who-gets-car-mamdani-administration-these-52-officials/415162/"
+    },
+    "f6b911aa9b64fd5272ee06a4191d5ec10300e428a5200d14822cefb850bc8e2d": {
+      "first_seen": "2026-08-03",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/08/02/nyc-2k-expansion-mamdani-doe-deputy-chancellor-leaves/"
+    },
+    "f8fbe38509fca4a65eda2ef76194b5e0dc3efd63a8845e94e873df74e4b08da2": {
+      "first_seen": "2026-08-03",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/07/state-comptroller-dinapoli-releases-municipal-school-audits-1"
     }
   },
   "version": 1
