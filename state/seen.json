@@ -1,5 +1,20 @@
 {
   "items": {
+    "00f0fd2969e69d8481901cbe7d44abc9adf02cea8067f3ccdd214cf44509b310": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-michael-gianaris-transformation-state-senate-shouldnt-be-overlooked/416196/"
+    },
+    "0205c0dd6273ec82b01888b2270b97c67ba77067bd44b5c0f98237d60a10cb05": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/25/subway-mta-delays-wind-trees-rain-storm-noreaster/"
+    },
+    "068ded3ca221d4239ec2086bf70b895daafc646d91db3884632eb06eaee7ddd3": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/andrew-cuomos-covid-19-mountain-poster-recreated/416235/"
+    },
     "07daec3edae81dc127617bf494bfca2702ce218dee5bdb8d5bde26fb2ad6d0dd": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -10,15 +25,40 @@
       "source": "nyc_comptroller",
       "url": "https://comptroller.nyc.gov/newsroom/testimonies/testimony-of-new-york-city-comptroller-mark-levine-before-the-charter-revision-commission-on-government-efficiency-coge-2/"
     },
+    "09b43184ee7821724e8bd4f6465da7ca2aa68cb4d512e6c6194491af275104e4": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/zohran-mamdani-isnt-ready-talk-about-future/416243/"
+    },
+    "0ae0127bd9410e40514489ab4e745c3a92a2edc8b2c4e527fe8e71b514fcf8af": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-and-skoufis-highlight-over-16000-unclaimed-funds-returned-town-wallkill-ems"
+    },
+    "0e66726297f7cd21a3b710191814e633ab6d75ebe8efeabdd831e685a68bb243": {
+      "first_seen": "2026-09-28",
+      "source": "empire_center",
+      "url": "https://www.empirecenter.org/publications/taxes-the-cost-of-living-and-feeling-ignored-why-new-yorkers-are-thinking-of-leaving/"
+    },
     "0f5f06dea6d9339587971dd91e0dfff83f41a3b763f767c7e1c8c0d0130d50cf": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/politics/2026/07/new-rules-you-dont-need-labor-during-election-you-need-them-after/414717/"
     },
+    "0f9883ff4efd9274d925d7b7be53787122f44114ab16404c30c64ad0ef0a12a4": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/carl-heastie-prince-his-own-words/416240/"
+    },
     "0fbfd00a0a3bd5cf9a42468ecb72002f8023972c37e6765631b06813bd8a4771": {
       "first_seen": "2026-07-13",
       "source": "ny_focus",
       "url": "https://nysfocus.com/2026/07/13/new-york-prisons-violence-use-of-force-review"
+    },
+    "10159e527dc32697038d7d759e61fdde86b4e01fe68c9570b23e0239c61cc86a": {
+      "first_seen": "2026-09-28",
+      "source": "ibo",
+      "url": "https://www.ibo.nyc.gov/content/publications/2026-september-doc-mental-health-testimony"
     },
     "10c3215765eb54aab7b7d1f3f6e15b10a30e1c7ce500ce394f43717e14dd1cac": {
       "first_seen": "2026-07-13",
@@ -30,15 +70,45 @@
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/08/ice-new-justification-federal-plaza-court-arrests/"
     },
+    "13dde164c4db99c335e9bf72f42090e7adaf976c76527151dab87778c1479f53": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/state-comptroller-dinapoli-and-dfs-acting-superintendent-asrow-designate-new-banking-development"
+    },
+    "14565342589c7c81f888de27d742d89926d0068e0f29f4bd408821df797ba0fc": {
+      "first_seen": "2026-09-28",
+      "source": "manhattan_institute",
+      "url": "https://manhattan.institute/article/socialism-goes-sideways-in-seattle"
+    },
+    "14daf778d55b840c7deec39d9dde3b7bdac77b0f6f821f0b149027315693fcdd": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-better-oversight-and-monitoring-needed-address-teacher-shortages"
+    },
     "14e6bd4345fb2b7677cc490988c73a384519883e45334b98e427c271ca528fa6": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/nyn-media/2026/07/opinion-why-block-block-matters-new-yorks-future-homeowners/414597/"
     },
+    "177139932789a6a23419c9fa3595cda0bee7a34be4995032f2c70fabac69437b": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/25/terrorism-9-11-nypd-asad-dandia-knickerbocker-history-faqnyc-podcast/"
+    },
     "18431d070cc9b4f026738c7bceb5f81097725ee493b043bae82d38bfa624638a": {
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/11/bernhard-goetz-darrell-cabey-npr-jimmy-breslin-litnyc-podcast/"
+    },
+    "184ba349657446d7c7666593c5078d1a48220270fccca3485a494c63dde936c1": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-bill-de-blasios-record-addressing-tale-two-cities/416247/"
+    },
+    "190c93809218e6a857e62eecbd3bb8dc9d4e7d1f21fb97236a65d0730e9ba0ee": {
+      "first_seen": "2026-09-28",
+      "source": "nyc_comptroller",
+      "url": "https://comptroller.nyc.gov/newsroom/nyc-comptroller-mark-levine-proposes-expansion-in-private-markets-climate-investments-to-advance-systems-climate-goals/"
     },
     "1a31c774982e82552abc02f505482981780e805ecb0eca8e28c4a5f1b88ba8a0": {
       "first_seen": "2026-07-13",
@@ -55,10 +125,25 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/07/better-coordination-and-more-effective-services-needed-victims-domestic-violence"
     },
+    "1de27398b60960406f0e56f1bb7b8bd2544995a4a139089bd2e2c53ea65ca4fe": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/nyslrs-announces-employer-contribution-rates-sfy-2027-28"
+    },
     "20abb6a3f2ef6761af034d9230b99c762ea889fe732594a0175f673976a56cef": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/07/dinapoli-nyc-department-buildings-meets-critical-goals-lags-lower-priority-issues"
+    },
+    "248a64fecf48a3028417b50e22badfce7405a8f6e8b1bddafe9aeebca735ee76": {
+      "first_seen": "2026-09-28",
+      "source": "empire_center",
+      "url": "https://www.empirecenter.org/publications/long-islanders-and-empire-center-debate-homeschooling/"
+    },
+    "24b610d68730dc6c0c83c1f362ed477ac28dacbd20a43ac20442877dfb93e434": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-workplace-injuries-and-illnesses-decline-new-york"
     },
     "24c12d8c1ca2c9b21903f162f08b4ce8c889faae0779262381979b2184ab1391": {
       "first_seen": "2026-07-13",
@@ -70,10 +155,25 @@
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/the-bigger-apple-off-the-map-the-politics-of-nycs-world-cup-guide"
     },
+    "2777236970cae236b95a2e2ba798e45257a608500433806309c8e995e9e8e972": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/09/preet-bhararas-rogues-gallery/416259/"
+    },
+    "2b9b04c7fca854905ad1cd5aa2332ffa5bbeb36f8dcb4542a871bbc23678a126": {
+      "first_seen": "2026-09-28",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/09/24/coops-condos-united-rebny-local-law-97"
+    },
     "2f880a4107f110dde85b0b4017df5e4f7c8f712fcf7b0a94df2d11a9f768e2c4": {
       "first_seen": "2026-07-13",
       "source": "empire_center",
       "url": "https://www.empirecenter.org/publications/the-attorney-generals-mfcu-snafu/"
+    },
+    "318e378db60869ab730e655e25e124cee85fa248aeacb1cc2a6a6471dfa3c87f": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-jerry-nadler-set-example-all-studious-manhattan-politicians/416242/"
     },
     "31ba5532a8b554824cc993bf8ab911c858f80a5c04667c28c58d00046908c27a": {
       "first_seen": "2026-07-13",
@@ -90,10 +190,20 @@
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/10/industrial-zone-budget-cuts-funding-manufacturing/"
     },
+    "3644b555b51df3a362ba2f3b391b1b382de683f6b98a0dd1de5f3157676435c0": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/25/federal-grant-trump-mamdani-vets-trans-shelter/"
+    },
     "36b53813ae764a311e957e7ffa09f9eee86a3185795e285ea70011d75a5caeac": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/dinapoli-nyc-executive-budget-currently-balanced-risks-threaten-long-term-fiscal-stability"
+    },
+    "3ec91e3291aef08858364604e833a10d834346a116bb72b98fd74e0b030c6af3": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/politics/2026/09/mamdani-looking-his-fdr/416232/"
     },
     "42d141117121d9b41dee41501cf49169fd2f1829edd8f1bc006143fc6a5ca0b1": {
       "first_seen": "2026-07-13",
@@ -105,20 +215,70 @@
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/08/brian-kendall-nypd-murder-exonerated-lawsuit/"
     },
+    "44d9c21bb2cae7201976dc5687f33388e3a4abcc6966db522fa77985192e06cc": {
+      "first_seen": "2026-09-28",
+      "source": "empire_center",
+      "url": "https://www.empirecenter.org/publications/the-fatal-flaw-in-new-yorks-climate-superfund-law/"
+    },
     "4584b2d74a61c7fe668746492f279085099988985f4ff5409e30f1ededeba173": {
       "first_seen": "2026-07-13",
       "source": "cbc",
       "url": "https://cbcny.org/research/false-choice"
+    },
+    "4683757f7e9ec96be1b9832c1cf6f47ff374bc1fda277368c305298bc8004f5a": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/hed-opinion-what-9-5-still-says-about-work/416222/"
     },
     "47f38f6416c55feced4f0c29c87f6a2fc1c2dc120e61e33c5bcee1d62ff9bbd4": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-statement-new-york-city-reserves"
     },
+    "49164f1c95ee05e00b769d9889bad1ce2c045101a654bd7c88098a144a08fc7a": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-kathy-hochul-has-always-been-tireless-worker/416236/"
+    },
+    "49cee8b847069bd003d68fbea752cb68792007c76e4e70b3d010c36cf24028bd": {
+      "first_seen": "2026-09-28",
+      "source": "nyc_comptroller",
+      "url": "https://comptroller.nyc.gov/newsroom/newsletter/new-york-by-the-numbers-monthly-economic-and-fiscal-outlook-no-117-september-2026/"
+    },
+    "4e1895437fa7a6a30906026dc43aa2c9e22596f8314574fbc2905c00526aecc1": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/24/new-york-state-exams-high-school-students-college-readiness/"
+    },
+    "4fec18ad46097ac610ce0fc4778ed755a7f69f78a157a591f4e91b5ed0517d69": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/reporters-share-their-favorite-sheldon-silver-stories/416209/"
+    },
+    "50d34fafa10138adeff64d38c6145f4d322d36a98cb24014c0f6ec96db1ffaf3": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-statement-secs-rescission-shareholder-proposal-rule"
+    },
     "50f06525c6cc616f646b87f7075ed9944c34f612991ec5ead5bd47de4507cec6": {
       "first_seen": "2026-07-13",
       "source": "cbc",
       "url": "https://cbcny.org/research/top-charts-3"
+    },
+    "51c8d9d86bc1a06338ebff382abd8de4c5f38d4dc03f345bbfab85cb008f8503": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/comparing-every-new-york-city-council-speaker-past-20-years/416239/"
+    },
+    "5243b14d087f2bb2cd455cc8c8bb830d07c3686db34d57baa058c11eefccca70": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-new-york-sees-surge-mobile-sports-betting-and-jump-problem-gambling-calls"
+    },
+    "556ebe1c42d36e4555898acfd6abef1d8f81b1e6a451cbf568041ac3279ed732": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/curtis-sliwa-eric-adams-train/416258/"
     },
     "5848a2cde27096409f068a0d728f85fbc85df5a75fa20ce1cf9830b171a13f1a": {
       "first_seen": "2026-07-13",
@@ -130,15 +290,40 @@
       "source": "cbc",
       "url": "https://cbcny.org/research/competitive-nyc"
     },
+    "5e1cef6922b426233dfc3e7a6bb175dcffcdfcc58e4cd67202f0c5dcf64a45fb": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/28/ny-prison-contraband-overdoses-fentanyl-narcan/"
+    },
+    "6079a6efb0d7a4a5a4f18067a13c51aa0a797e7f8bba52e55c5ea49737d7c5c9": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/state-comptroller-dinapoli-releases-municipal-school-audits"
+    },
+    "6367eb417312fdd830a73ecdeaeacfb9bf7b6a8cf5f2ad0eb86fba750331498b": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/24/borden-avenue-shelter-va-gpd-transitional-housing/"
+    },
     "63da281dd87bd75e25c500665deb557b8e0ab41334d0ee0d53bf879c969020a3": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/opinion/2026/07/opinion-end-new-yorks-complicity-israels-war-crimes/414693/"
     },
+    "65fb7d8cecffd409d63b3dcfbccf2f9aeb935358d29a24532362ff1ad54649a8": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/chuck-schumer-still-traveling-and-sticking-it-al-damato/416169/"
+    },
     "662746f47980c17c1f152ddf02cf35a20592d06a203ab1fad4a534d0dedd117a": {
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/13/world-cup-hotel-bust-watch-parties-economy-sports-bars/"
+    },
+    "66cfc15e4e2aea11a2b6df420f39c389381c3e346f5d0b2ffd42c5c6da800a0a": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-how-aoc-picking-torch-retiring-generation/416241/"
     },
     "6e4ae6fd442d196d1f843b43a9301b69ddf299d7d855738724d2a5279f8bf18f": {
       "first_seen": "2026-07-13",
@@ -149,6 +334,11 @@
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/politics/2026/07/good-government-groups-back-18-pay-raise-city-council-elected-officials/414624/"
+    },
+    "71abcc1b2722c1b69f536974b1c0cbc6788bf9b541f7347f64f01a30e93a4e1b": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/20th-anniversary/2026/09/20-most-influential/416254/"
     },
     "71be68e861d4b779cc25f385b4e3067825870117c8ec5b7f693975d39d88f8bf": {
       "first_seen": "2026-07-13",
@@ -190,6 +380,16 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-releases-municipal-audits-0"
     },
+    "7b5d1594259f48e77e2d4ff985855d3c08fdd794d30e932aeec5093cc6306049": {
+      "first_seen": "2026-09-28",
+      "source": "ibo",
+      "url": "https://www.ibo.nyc.gov/content/publications/2026-september-how-does-nyc-collect-parking-fines-from-delivery-companies"
+    },
+    "7d4a5472e5ff86536bbbebc06f0e132a18629db8075ad89cb41e63aa2609bfa7": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/power-lists/2026/09/2026-city-state-hall-fame/416129/"
+    },
     "828c95e6ec7b62f0837cfdbb600620cd267652fcfbddf69e8ab9cc3d1a11c825": {
       "first_seen": "2026-07-13",
       "source": "cbc",
@@ -220,6 +420,26 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/state-comptroller-dinapoli-releases-municipal-audits"
     },
+    "8caaeecfe6c648dc658d6b496043dd352d8ca0ca8b5e238aa6065ff2745b4df6": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/all-about-numbers-tom-dinapolis-impact-new-york/416238/"
+    },
+    "8cfc0d79157ab430127115c6b1f376f50bb7f708af1a16c7447d60012337213d": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/state-comptroller-dinapoli-releases-audits"
+    },
+    "8e2999e7d75f6399bbf5134f9329a1191c427ee71e9443f44a54b7f69984b065": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-lower-manhattan-25-years-after-911"
+    },
+    "8ecbc2a7de667260a6da22d151975ab24c379350d49ac3038941846d2c9965f8": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/christine-quinn-shares-what-it-was-really-work-mike-bloomberg/416195/"
+    },
     "92ae6117fc2faf451d101660bc3bb15a67c33825d55860403dc4675f6e6b046f": {
       "first_seen": "2026-07-13",
       "source": "ny_focus",
@@ -235,10 +455,20 @@
       "source": "nyc_comptroller",
       "url": "https://comptroller.nyc.gov/newsroom/press-releases/new-york-city-comptroller-mark-levine-launches-first-of-its-kind-dashboard-to-increase-accountability-on-city-vendor-contracting-and-payment-delays/"
     },
+    "95af7c3fab44e5e2aacbfd62d65ecf0aa3c847b680706ff1fb69279a71f11453": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/how-charlie-rangel-won-over-al-sharpton/416245/"
+    },
     "95c61c286bc3f011045881081bfb66c69341b453fe8e75b77b44967ecd1d368e": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/podcasts/2026/07/episode-1-lessons-silicon-valley/414632/"
+    },
+    "9622434a2d3d170fe025ee29479bcd4e9255dd0c9cc9340b315dc26bdda7976b": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-releases-analysis-state-grant-funding-new-york-city"
     },
     "9830dccc0a01cfea1b584a6e9c832fa796cbd36ac6226c608aa3429480a87c0b": {
       "first_seen": "2026-07-13",
@@ -255,6 +485,11 @@
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/opinion/2026/07/opinion-knicks-won-their-fans-lost-their-privacy-its-time-ban-scan/414589/"
     },
+    "9e56765c8f25335da47552286fd442629af0a36951f3e76ac3b2e5e30fbd222f": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-announces-scheduled-sale-state-new-yorks-first-environmental-social-and-governance-general"
+    },
     "9f2daed9fc30e0553ca01e221b7e24b76b1fd962e93c6294416711147047f940": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
@@ -269,6 +504,16 @@
       "first_seen": "2026-07-13",
       "source": "ny_focus",
       "url": "https://nysfocus.com/2026/07/07/ny-pre-k-funds-unused-school-districts"
+    },
+    "a0d5fe8e4b79f6554bb40e03da062fe875929d72bfc940407d0f8b65545758ab": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/nys-comptroller-dinapoli-and-nyc-comptroller-levine-statement-secs-plan-silence-shareholders-public"
+    },
+    "a4cba6a529355ed3c620d8a3824467522239ffd1ec2e4f4b417fc34dd42533ae": {
+      "first_seen": "2026-09-28",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/09/28/new-york-sheriffs-immigration-collusion-ice"
     },
     "a744fb41ea5cd88a36ea624624b6c72168a2f3ddc094e45720ffd57f6994a5cf": {
       "first_seen": "2026-07-13",
@@ -295,6 +540,16 @@
       "source": "nys_comptroller",
       "url": "https://www.osc.ny.gov/press/releases/2026/06/dinapoli-upstate-bus-services-needs-better-time-performance"
     },
+    "a9594a1e8077cc7c234fe77056c830dd485b3d42298efbb85ddf9833d65d6257": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/jeffries-and-james-rising-through-ranks-together/416193/"
+    },
+    "ac4e23761ae8d8ab9f41f8378bb8449582f5fa85640394fcc08003163478b7ba": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-announces-latest-fiscal-stress-scores-local-governments"
+    },
     "b17cbb14d68cd3af42216f43664ebe63f21d8c1545c0efd2f4342a7b8d3e6d54": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
@@ -305,6 +560,11 @@
       "source": "cbc",
       "url": "https://cbcny.org/research/nyc-budget-blueprint"
     },
+    "b6663fdccc4bacfdeb9b6f22ce3213801a190fc1deaf9b189a6cbf5561c10050": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/state-comptroller-dinapoli-releases-municipal-school-audits-0"
+    },
     "b81048e66b7ca86e10f53a81ebdf01501968dd86267d871787b0ad08ec0f514f": {
       "first_seen": "2026-07-13",
       "source": "ny_focus",
@@ -314,6 +574,11 @@
       "first_seen": "2026-07-13",
       "source": "the_city",
       "url": "https://www.thecityreporter.nyc/2026/07/09/upper-east-side-legionnaires-cooling-tower-inspections/"
+    },
+    "bb131bef9dc8f5132f4a5cd822e0099c7b5c697243ca5046d1844244dd1ea7ce": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-announces-sale-new-yorks-first-environmental-social-and-governance-general-obligation-bonds"
     },
     "bce976a3014e946faefc8c6237a3b9130b7f1891c32f8d6b3a274654ce7bccf7": {
       "first_seen": "2026-07-13",
@@ -330,6 +595,11 @@
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/personality/2026/07/ali-krieger-talks-zohran-mamdani-and-gotham-fc-coming-queens/414638/"
     },
+    "c26e79e3bba0afc8a6a30311dd5655158c974a48af3e74425d2a70c1e9af39fb": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/24/ice-ruling-26-federal-plaza-nyc-immigration-lewis-kaplan/"
+    },
     "c35177e4fae6207b7ff9c8221f511a07e7edd844a75db7d3daf059aba6688b3d": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
@@ -340,10 +610,25 @@
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/adams-650m-plan-for-homeless-mentally-ill-holds-a-mirror-to-his-troubled-tenure-2"
     },
+    "c8c6092309619a8feae1ebe7d6f268ec74b5292300e937f3bd4dde04724c30ba": {
+      "first_seen": "2026-09-28",
+      "source": "fpi",
+      "url": "https://fiscalpolicy.org/the-future-of-the-essential-plan"
+    },
     "c973575b08839234bbce7906aa90622ba3a04c1e319f8fae05098465daa979f1": {
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/policy/2026/07/legislation-ban-horse-carriages-nears-majority-support/414703/"
+    },
+    "cba9095ab9e5458dd42d9ae717fcb8d30e965132d2015b33b620c9e6c39d5796": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/weeks-biggest-winners-losers-september-25-2026/416215/"
+    },
+    "cea26934baa0fa76e4070161cb7bfebaf1371a307fc11731eb47db469fcac99a": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/28/rikers-island-death-report-corrections-department/"
     },
     "cf00fb0684018a7d222ee537ba2cd1e511fef2e8beb287c2210c05215fc92b45": {
       "first_seen": "2026-07-13",
@@ -354,6 +639,16 @@
       "first_seen": "2026-07-13",
       "source": "city_and_state",
       "url": "https://www.cityandstateny.com/power-lists/2026/07/2026-whos-who-insurance/414625/"
+    },
+    "d4544efdf6a9f3f669a669ef2aa2b919957c966c63d65e3decd5ee165a896a16": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/opinion/2026/09/opinion-andrea-stewart-cousins-state-senate-has-been-professional-and-productive/416237/"
+    },
+    "d492a687af63cb252380b3173d4b76e94e5e8abbc4f098be3b4032504d99fe37": {
+      "first_seen": "2026-09-28",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/09/23/new-york-sex-education-curriculum-nyclu-report"
     },
     "d8dd2c2220d83cc24447594c7a9dc9cb7ff550c0f00c2b00d0d83efd8775911b": {
       "first_seen": "2026-07-13",
@@ -375,6 +670,16 @@
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/top-mamdani-officials-shady-meet-with-iran-ambassador-goes-beyond-nyc-agenda"
     },
+    "e31ad1a170c8e69937c6cd62a0eb76c388212ddd1020550472c3a63cf209b831": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/24/rent-freeze-lease-deadline-judge-lawsuit/"
+    },
+    "e4662b823673e4904c7bae51df665e02525afcfbbd545635d59c8f43da65ba4b": {
+      "first_seen": "2026-09-28",
+      "source": "manhattan_institute",
+      "url": "https://manhattan.institute/article/the-bigger-apple-the-mayors-to-do-list-skips-the-classroom"
+    },
     "e6b00205f63f4204638569346948cbbd0f21f224eff1058723a9ec412a4c18b6": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
@@ -394,6 +699,21 @@
       "first_seen": "2026-07-13",
       "source": "manhattan_institute",
       "url": "https://manhattan.institute/article/private-equity-for-everyone-is-getting-out-of-hand"
+    },
+    "e886bbd1f72e114c5dafb61f7a05a6d43beccf7b0c79ae21f1b3e1498d6c1cf0": {
+      "first_seen": "2026-09-28",
+      "source": "ibo",
+      "url": "https://www.ibo.nyc.gov/content/publications/2026-september-headstart-public-comment"
+    },
+    "e93960ce34e69c3af4732fe745b5569f5bed464bbada9739122f5a446d14dde3": {
+      "first_seen": "2026-09-28",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/09/22/offshore-wind-job-training-long-island"
+    },
+    "e96332093848ac5e1ba004d8d3e4a3913e65c05d56f447b519170dc2e1d7f781": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/08/dinapoli-millions-state-tax-checkoff-donations-worthy-causes-remain-unused"
     },
     "eadbc4a8a760938d261b2ac4861106dea59e03674ad55658ebb6d96b299a533a": {
       "first_seen": "2026-07-13",
@@ -420,6 +740,11 @@
       "source": "empire_center",
       "url": "https://www.empirecenter.org/publications/new-yorks-electricity-prices-fourth-highest-in-the-country/"
     },
+    "ee274fa69c3c351b17fd25fe31ac5c1aa061828ce585e4b3fdc02a287d6e8865": {
+      "first_seen": "2026-09-28",
+      "source": "manhattan_institute",
+      "url": "https://manhattan.institute/article/are-bonds-safe-that-depends-on-what-safe-means"
+    },
     "ef1930e8b2cf94065540d913ff23e33f7a3534f3fd7191f9cb568bcc826307ca": {
       "first_seen": "2026-07-13",
       "source": "nys_comptroller",
@@ -429,6 +754,26 @@
       "first_seen": "2026-07-13",
       "source": "cbc",
       "url": "https://cbcny.org/research/nyc-resident-feedback-survey-report-results"
+    },
+    "f38a0c111191786bf4406c088aa0da7a93597a3df5a61d380990f334cb85b624": {
+      "first_seen": "2026-09-28",
+      "source": "ny_focus",
+      "url": "https://nysfocus.com/2026/09/23/new-york-immigration-court-rep-dan-goldman"
+    },
+    "f6d389f42f0578fded05410ec7235c78d3dd46b4aa4ef25c009cac85c9763f16": {
+      "first_seen": "2026-09-28",
+      "source": "the_city",
+      "url": "https://www.thecityreporter.nyc/2026/09/24/more-than-100-arrested-protesting-netanyahu-at-united-nations/"
+    },
+    "f93c81ba392e7f8859cd6e84178d98cd382773e8696a26183f8c2ddb37d1166f": {
+      "first_seen": "2026-09-28",
+      "source": "nys_comptroller",
+      "url": "https://www.osc.ny.gov/press/releases/2026/09/dinapoli-and-ulster-co-da-nneji-owner-ulster-co-medical-transportation-company-sentenced-prison"
+    },
+    "fdab93de84c41b22605e7bf52c5ad786def824080807d67b1a9bbfd66953468a": {
+      "first_seen": "2026-09-28",
+      "source": "city_and_state",
+      "url": "https://www.cityandstateny.com/personality/2026/09/donald-trump-was-queens-boy/416248/"
     }
   },
   "version": 1
